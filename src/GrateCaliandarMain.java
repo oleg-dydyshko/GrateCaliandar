@@ -497,8 +497,7 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<strong>Успамін забойства полацкіх манахаў-базыльянаў</strong>";
                 }
-                // числа Сабора примерные
-                for (int i = 12; i <= 18; i++) {
+                for (int i = 11; i <= 17; i++) {
                     pasha.set(year, 9, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SUNDAY == dayofweek) {
@@ -541,21 +540,6 @@ public class GrateCaliandarMain extends JFrame {
                         sv_per_ch = "Нядз.: Гал 2.16-20; Мк 8.34-9.1";
                     }
                 }
-
-                /*for (int i = 30; i <= 31; i++) {
-                    pasha.set(year, 11, i);
-                    int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
-                    if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SUNDAY == dayofweek) {
-                        predsviaty = "<strong>Нядзеля перад Богазьяўленьнем</strong>";
-                    }
-                }
-                for (int i = 1; i <= 5; i++) {
-                    pasha.set(year, 0, i);
-                    int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
-                    if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SUNDAY == dayofweek) {
-                        predsviaty = "<strong>Нядзеля перад Богазьяўленьнем</strong>";
-                    }
-                }*/
                 for (int i = 7; i <= 13; i++) {
                     pasha.set(year, 0, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
@@ -582,7 +566,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 pasha.set(year, 0, 1);
-                if ((DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == pasha.get(Calendar.DAY_OF_WEEK))) {
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == pasha.get(Calendar.DAY_OF_WEEK)) {
                     predsviaty = "<strong>Субота пасьля Раства Хрыстовага</strong>";
                     sv_per_ch = "Суб.: 1 Цім 6.11-16; Мц 12.15-21";
                 }
@@ -646,20 +630,26 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     GregorianCalendar vtt = new GregorianCalendar(year, 1, 17);
                     if (vtt.get(Calendar.DAY_OF_YEAR) - 1 != pasha.get(Calendar.DAY_OF_YEAR)) {
-                        sv_per = "Вялікамуч. Тодара Тырона;<br>";
+                        sv_per = "Вялікамуч. Тодара Тырона";
+                        sv_per_ch = "Вялікамуч.: 2 Цім 2.1-10; Ян 15.17-16.2";
                     }
-                    sv_per_ch = "Сьв.: 2 Цім 2.1-10; Ян 15.17-16.2";
                 }
                 pasha.set(year, month_p - 1, data_p);
                 pasha.add(Calendar.DATE, -22);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
-                    sv_per = "Вялебнага Яна Лесьвічніка;<br>";
+                    String br = "";
+                    if (!sv_per.equals(""))
+                        br = ";<br>";
+                    sv_per = sv_per + br + "Вялебнага Яна Лесьвічніка";
                     sv_per_ch = "Вялеб.: Эф 5.9-19; Мц 4.25-5.12";
                 }
                 pasha.set(year, month_p - 1, data_p);
                 pasha.add(Calendar.DATE, -15);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
-                    sv_per = "Вялебнай Марыі Ягіпецкай;<br>";
+                    String br = "";
+                    if (!sv_per.equals(""))
+                        br = ";<br>";
+                    sv_per = sv_per + br + "Вялебнай Марыі Ягіпецкай";
                     sv_per_ch = "Вялеб.: Гал 3.23-29; Лк 7.36-50";
                 }
                 pasha.set(year, 1, 28);
@@ -667,15 +657,9 @@ public class GrateCaliandarMain extends JFrame {
                     pasha.add(Calendar.DATE, 1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     String br = "";
-                    if (!pasha.isLeapYear(year))
+                    if (!sv_per.equals(""))
                         br = ";<br>";
-                    sv_per = "Вялеб. Касьяна Рымляніна" + br;
-                }
-                pasha.set(year, 1, 28);
-                pasha.add(Calendar.DATE, -15);
-                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
-                    sv_per = "Вялебнай Марыі Ягіпецкай;<br>";
-                    sv_per_ch = "Вялеб.: Гал 3.23-29; Лк 7.36-50";
+                    sv_per = sv_per + br + "Вялеб. Касьяна Рымляніна";
                 }
 
                 // Памінаньне памёрлых
@@ -774,22 +758,25 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyia_new_o = sviatyia_new_o.substring(t1 + 1).trim();
                 }
                 if ((sviatyia_new_o != null && !sviatyia_new_o.equals("")) || !sv_per.equals("")) {
-                    sviatyiaName = sv_per + sviatyia_new_o;
+                    String br = "";
+                    if (!sviatyia_new_o.equals("") && !sv_per.equals(""))
+                        br = ";<br>";
+                    sviatyiaName = sviatyia_new_o + br + sv_per;
                 }
 
                 if (sviatyia_new[DayYear][2].equals("7")) {
-                    int sv1 = sviatyia_new_o.indexOf(";");
+                    int sv1 = sviatyiaName.indexOf(";");
                     if (sv1 != -1)
-                        sviatyiaName = "<strong>" + sviatyia_new_o.substring(0, sv1 + 1) + "</strong>" + sviatyia_new_o.substring(sv1 + 1);
+                        sviatyiaName = "<strong>" + sviatyiaName.substring(0, sv1 + 1) + "</strong>" + sviatyiaName.substring(sv1 + 1);
                     else
-                        sviatyiaName = "<strong>" + sviatyia_new_o + "</strong>";
+                        sviatyiaName = "<strong>" + sviatyiaName + "</strong>";
                 }
                 if (sviatyia_new[DayYear][2].equals("6")) {
                     int sv1 = sviatyia_new_o.indexOf(";");
                     if (sv1 != -1)
-                        sviatyiaName = "<font color=#d00505>" + sviatyia_new_o.substring(0, sv1 + 1) + "</font>" + sviatyia_new_o.substring(sv1 + 1);
+                        sviatyiaName = "<font color=#d00505>" + sviatyiaName.substring(0, sv1 + 1) + "</font>" + sviatyiaName.substring(sv1 + 1);
                     else
-                        sviatyiaName = "<font color=#d00505>" + sviatyia_new_o + "</font>";
+                        sviatyiaName = "<font color=#d00505>" + sviatyiaName + "</font>";
                 }
 
                 if (bogaziaulenneNed == 1) {
