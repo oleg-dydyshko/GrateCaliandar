@@ -132,10 +132,8 @@ public class GrateCaliandarMain extends JFrame {
                         if (s.contains("/admin/parafii_bgkc/"))
                             svitya = new File("/home/oleg/www/carkva/admin/parafii_bgkc" + s.substring(t1));
                         FileUtils.copyURLToFile(new URL(s), svitya);
-                        if (s.contains("/admin/pesny/pesny_menu"))
+                        if (s.contains("/admin/pesny"))
                             FileUtils.copyFile(svitya, new File("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw" + s.substring(t1)));
-                        else
-                            FileUtils.copyFile(svitya, new File("/home/oleg/AndroidStudioProjects/Malitounik/resources/src/main/res/raw" + s.substring(t1)));
                     }
                     FileUtils.copyURLToFile(new URL("https://carkva-gazeta.by/calendarsviatyia.txt"), new File("/home/oleg/www/carkva/calendarsviatyia.txt"));
                     java.lang.reflect.Type type2 = new TypeToken<String>() {
@@ -496,6 +494,10 @@ public class GrateCaliandarMain extends JFrame {
                 pasha.set(year, 6, 11);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<strong>Успамін забойства полацкіх манахаў-базыльянаў</strong>";
+                }
+                pasha.set(year, 4, 7);
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    predsviaty = "<strong>Успамін з'яўленьня знаку Пачэснага Крыжа ў Ерусаліме</strong>";
                 }
                 for (int i = 11; i <= 17; i++) {
                     pasha.set(year, 9, i);
