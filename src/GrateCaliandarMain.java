@@ -131,9 +131,17 @@ public class GrateCaliandarMain extends JFrame {
                             svitya = new File("/home/oleg/www/carkva/admin/pesny" + s.substring(t1));
                         if (s.contains("/admin/parafii_bgkc/"))
                             svitya = new File("/home/oleg/www/carkva/admin/parafii_bgkc" + s.substring(t1));
+                        if (s.contains("/admin/prynagodnyia/"))
+                            svitya = new File("/home/oleg/www/carkva/admin/prynagodnyia" + s.substring(t1));
+                        if (s.contains("/admin/bogashlugbovya/"))
+                            svitya = new File("/home/oleg/www/carkva/admin/bogashlugbovya" + s.substring(t1));
                         FileUtils.copyURLToFile(new URL(s), svitya);
                         if (s.contains("/admin/pesny"))
                             FileUtils.copyFile(svitya, new File("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw" + s.substring(t1)));
+                        File destFile = new File("/home/oleg/AndroidStudioProjects/Malitounik/resources/src/main/res/raw" + s.substring(t1));
+                        if (s.contains("/chytanne/sviatyja/") || s.contains("/admin/parafii_bgkc/") || s.contains("/chytanne/Semucha/") || s.contains("/admin/prynagodnyia/") || s.contains("/admin/bogashlugbovya/")) {
+                            FileUtils.copyFile(svitya, destFile);
+                        }
                     }
                     FileUtils.copyURLToFile(new URL("https://carkva-gazeta.by/calendarsviatyia.txt"), new File("/home/oleg/www/carkva/calendarsviatyia.txt"));
                     java.lang.reflect.Type type2 = new TypeToken<String>() {
