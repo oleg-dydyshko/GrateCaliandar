@@ -791,9 +791,9 @@ public class GrateCaliandarMain extends JFrame {
 
                 if (bogaziaulenneNed == 1) {
                     bogaziaulenne = bogaziaulenne - 2;
-                } else if (bogaziaulenneNed == 7) {
+                } /*else if (bogaziaulenneNed == 7) {
                     bogaziaulenne = bogaziaulenne - 1;
-                }
+                }*/
                 if (AdsiachenneGalavyNed == 1) {
                     AdsiachenneGalavy = AdsiachenneGalavy - 2;
                 } /*else if (AdsiachenneGalavyNed == 7) {
@@ -801,14 +801,14 @@ public class GrateCaliandarMain extends JFrame {
                 }*/
                 if (KrygaUzvyshenneNed == 1) {
                     KrygaUzvyshenne = KrygaUzvyshenne - 2;
-                } else if (KrygaUzvyshenneNed == 7) {
+                } /*else if (KrygaUzvyshenneNed == 7) {
                     KrygaUzvyshenne = KrygaUzvyshenne - 1;
-                }
+                }*/
                 if (KaliadyNed == 1) {
                     Kaliady = Kaliady - 2;
-                } else if (KaliadyNed == 7) {
+                } /*else if (KaliadyNed == 7) {
                     Kaliady = Kaliady - 1;
-                }
+                }*/
                 String tipicon = "0";
 
                 if (sviatyia_new[DayYear][3] != null && sviatyia_new[DayYear][3].equals("1")) {
