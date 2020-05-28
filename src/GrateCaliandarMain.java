@@ -791,9 +791,9 @@ public class GrateCaliandarMain extends JFrame {
 
                 if (bogaziaulenneNed == 1) {
                     bogaziaulenne = bogaziaulenne - 2;
-                } /*else if (bogaziaulenneNed == 7) {
+                } else if (bogaziaulenneNed == 7) {
                     bogaziaulenne = bogaziaulenne - 1;
-                }*/
+                }
                 if (AdsiachenneGalavyNed == 1) {
                     AdsiachenneGalavy = AdsiachenneGalavy - 2;
                 } /*else if (AdsiachenneGalavyNed == 7) {
