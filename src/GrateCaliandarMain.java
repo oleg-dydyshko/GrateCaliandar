@@ -499,14 +499,14 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<strong>Палова сьвята Пяцідзесятніцы</strong>";
                 }
-                pasha.set(year, 6, 11);
+                /*pasha.set(year, 6, 11);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<strong>Успамін забойства полацкіх манахаў-базыльянаў</strong>";
                 }
                 pasha.set(year, 4, 7);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<strong>Успамін з'яўленьня знаку Пачэснага Крыжа ў Ерусаліме</strong>";
-                }
+                }*/
                 for (int i = 11; i <= 17; i++) {
                     pasha.set(year, 9, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
@@ -775,19 +775,20 @@ public class GrateCaliandarMain extends JFrame {
                 }
 
                 if (sviatyia_new[DayYear][2].equals("7")) {
-                    int sv1 = sviatyiaName.indexOf(";");
+                    int sv1 = sviatyiaName.indexOf("$");
                     if (sv1 != -1)
                         sviatyiaName = "<strong>" + sviatyiaName.substring(0, sv1 + 1) + "</strong>" + sviatyiaName.substring(sv1 + 1);
                     else
                         sviatyiaName = "<strong>" + sviatyiaName + "</strong>";
                 }
                 if (sviatyia_new[DayYear][2].equals("6")) {
-                    int sv1 = sviatyia_new_o.indexOf(";");
+                    int sv1 = sviatyia_new_o.indexOf("$");
                     if (sv1 != -1)
                         sviatyiaName = "<font color=#d00505>" + sviatyiaName.substring(0, sv1 + 1) + "</font>" + sviatyiaName.substring(sv1 + 1);
                     else
                         sviatyiaName = "<font color=#d00505>" + sviatyiaName + "</font>";
                 }
+                sviatyiaName = sviatyiaName.replace("$", "");
 
                 if (bogaziaulenneNed == 1) {
                     bogaziaulenne = bogaziaulenne - 2;
