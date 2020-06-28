@@ -896,9 +896,9 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("СЬВЯТЫХ СЛАЎНЫХ І ЎСЯХВАЛЬНЫХ ВЯРХОЎНЫХ АПОСТАЛАЎ ПЯТРА І ПАЎЛА");
                     if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
-                        cytanneDop = "На ютрані: Ян 21.15-25\n2 Кар 11.21-12.9; Мц 16.13-19";
+                        cytanneDop = "На ютрані: Ян 21.15-25;\n2 Кар 11.21-12.9; Мц 16.13-19";
                     } else {
-                        sviatyaChtenia = "На ютрані: Ян 21.15-25\n2 Кар 11.21-12.9; Мц 16.13-19";
+                        sviatyaChtenia = "На ютрані: Ян 21.15-25;\n2 Кар 11.21-12.9; Мц 16.13-19";
                     }
                     post = false;
                     sviatyDay = "2";
@@ -909,9 +909,9 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("АДСЯЧЭНЬНЕ ГАЛАВЫ СЬВ. ЯНА ПРАДВЕСЬНІКА І ХРЫСЬЦІЦЕЛЯ");
                     if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
-                        cytanneDop = "На ютрані: Мц 14.1-13\nДз 13.25-32; Мк 6.14-30";
+                        cytanneDop = "На ютрані: Мц 14.1-13;\nДз 13.25-32; Мк 6.14-30";
                     } else {
-                        sviatyaChtenia = "На ютрані: Мц 14.1-13\nДз 13.25-32; Мк 6.14-30";
+                        sviatyaChtenia = "На ютрані: Мц 14.1-13;\nДз 13.25-32; Мк 6.14-30";
                     }
                     sviatyDay = "2";
                     tipicon = "2";
