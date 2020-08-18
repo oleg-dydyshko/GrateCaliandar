@@ -762,6 +762,36 @@ public class GrateCaliandarMain extends JFrame {
                     predsviaty = "<em>Лазарава субота</em>";
                     sv_per_ch = "На вячэрні: Быц 49.1-2, 8-12; Саф 3.14-19; Зах 9.9-15";
                 }
+                String sviachanni = "";
+                pasha.set(year, month_p - 1, data_p);
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    sviachanni = "Блаславеньне Пасхальнай ежы";
+                }
+                pasha.add(Calendar.DATE, -7);
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    sviachanni = "Блаславеньне вербаў";
+                }
+                pasha.set(year, 0, 6);
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    sviachanni = "Вялікае асьвячэньне вады";
+                }
+                pasha.set(year, 1, 2);
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    sviachanni = "Блаславеньне сьвечак";
+                }
+                pasha.set(year, month_p - 1, data_p);
+                pasha.add(Calendar.DATE, 49);
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    sviachanni = "Пасьля Літургіі Вячэрня з укленчаньнем";
+                }
+                pasha.set(year, 7, 6);
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    sviachanni = "Блаславеньне садавіны";
+                }
+                pasha.set(year, 7, 15);
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    sviachanni = "Блаславеньне духмяных зёлак";
+                }
                 String sviatyia_new_o = sviatyia_new[DayYear][0];
                 if (sviatyia_new_o != null && sviatyia_new_o.contains("+")) {
                     int t1 = sviatyia_new_o.indexOf("+");
@@ -1149,6 +1179,7 @@ public class GrateCaliandarMain extends JFrame {
                 } else {
                     arrayList.add("Тон " + ton + ". Трапары і кандакі"); // Тон в Воскресенье 20
                 }
+                arrayList.add(sviachanni); // Блаславеньні на сьвяты 21
                 arrayListsNelel.add(arrayList);
                 arrayList = new ArrayList<>();
 
