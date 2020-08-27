@@ -765,7 +765,7 @@ public class GrateCaliandarMain extends JFrame {
                 String sviachanni = "";
                 pasha.set(year, month_p - 1, data_p);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
-                    sviachanni = "Блаславеньне Пасхальнай ежы";
+                    sviachanni = "Блаславеньне велікодных страваў";
                 }
                 pasha.add(Calendar.DATE, -7);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
