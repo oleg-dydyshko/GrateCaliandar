@@ -98,7 +98,7 @@ class caliandar_year {
                 String[] re1 = line.split("<>");
                 if (gregorianCalendar.isLeapYear(Year)) {
                     for (int q = 0; q < re1.length; q++) {
-                        if (q == 1)
+                        if (e == 0)
                             // исправление чтения на 1 января
                             sviatyia_new[e][q] = re1[q].trim().replace("<br>", "\n");
                         else
@@ -111,7 +111,11 @@ class caliandar_year {
                     }
                     if (e < 59) {
                         for (int q = 0; q < re1.length; q++) {
-                            sviatyia_new[e][q] = re1[q].trim();
+                            if (e == 0)
+                                // исправление чтения на 1 января
+                                sviatyia_new[e][q] = re1[q].trim().replace("<br>", "\n");
+                            else
+                                sviatyia_new[e][q] = re1[q].trim();
                         }
                     } else {
                         for (int q = 0; q < re1.length; q++) {
