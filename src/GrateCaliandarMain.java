@@ -507,14 +507,6 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<strong>Успамін з'яўленьня знаку Пачэснага Крыжа ў Ерусаліме</strong>";
                 }*/
-                for (int i = 11; i <= 17; i++) {
-                    pasha.set(year, 9, i);
-                    int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
-                    if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SUNDAY == dayofweek) {
-                        predsviaty = "<strong>Айцоў VII Сусветнага Сабору</strong>";
-                        sv_per_ch = "Айцам.: Габ 13.7-16; Ян 17.1-13";
-                    }
-                }
                 for (int i = 7; i <= 13; i++) {
                     pasha.set(year, 8, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
@@ -1100,15 +1092,14 @@ public class GrateCaliandarMain extends JFrame {
                         postBild = "2";
                     }
                 }
-                /*for (int i = 11; i <= 17; i++) {
+                for (int i = 11; i <= 17; i++) {
                     pasha.set(year, 9, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
-                    if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && 1 == dayofweek) {
+                    if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SUNDAY == dayofweek) {
+                        predsviaty = "<strong>Айцоў VII Сусветнага Сабору</strong>";
                         cytanneSV = "Айцам.: Габ 13.7-16; Ян 17.1-13";
                     }
-                }*/
-
-
+                }
                 arrayList.add(String.valueOf(Nedel)); //День недели 0
                 arrayList.add(String.valueOf(c2.get(Calendar.DATE))); // Дата 1
                 arrayList.add(String.valueOf(c2.get(Calendar.MONTH))); // Месяц 2
