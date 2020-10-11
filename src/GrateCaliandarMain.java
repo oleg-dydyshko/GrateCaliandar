@@ -1100,13 +1100,13 @@ public class GrateCaliandarMain extends JFrame {
                         postBild = "2";
                     }
                 }
-                for (int i = 11; i <= 17; i++) {
+                /*for (int i = 11; i <= 17; i++) {
                     pasha.set(year, 9, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && 1 == dayofweek) {
                         cytanneSV = "Айцам.: Габ 13.7-16; Ян 17.1-13";
                     }
-                }
+                }*/
 
 
                 arrayList.add(String.valueOf(Nedel)); //День недели 0
