@@ -2004,9 +2004,9 @@ public class GrateCaliandarMain extends JFrame {
         paralel = paralel.replace("Прем", "Мдр");
         paralel = paralel.replace("Сир", "Сір");
         paralel = paralel.replace("Ис", "Іс");
+        paralel = paralel.replace("Посл Иер", "Пасл Ер");
         paralel = paralel.replace("Иер", "Ер");
         //paralel = paralel.replace("Плач", "Плач");
-        paralel = paralel.replace("Посл Иер", "Пасл Ер");
         //paralel = paralel.replace("Вар", "Бар");
         paralel = paralel.replace("Иез", "Езк");
         //paralel = paralel.replace("Дан", "Дан");
@@ -2351,7 +2351,7 @@ public class GrateCaliandarMain extends JFrame {
         maranata[290] = "Пс 31-32; Иер 48-49; 1 Тим 2";
         maranata[291] = "Пс 33; Иер 50-51; 1 Тим 3";
         maranata[292] = "Пс 34-35; Иер 52; 1 Тим 4";
-        maranata[293] = "Пс 36; Посл Иер; 1 Тим 5";
+        maranata[293] = "Пс 36; Посл Иер 1; 1 Тим 5";
         maranata[294] = "Пс 37-38; Плач 1-2; 1 Тим 6";
         maranata[295] = "Пс 39; Плач 3-5; 2 Тим 1";
         maranata[296] = "Пс 40-41; Вар 1-2; 2 Тим 2";
