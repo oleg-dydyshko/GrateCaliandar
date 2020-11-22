@@ -1189,6 +1189,7 @@ public class GrateCaliandarMain extends JFrame {
                     Mun = c2.get(Calendar.MONTH);
                 }
             }
+            gratePamiatekaVernikau(get_caliandar_year_max - 1);
             progressBar.setVisible(false);
             button.addActionListener(goButon);
             if (checkBox.isSelected()) {
@@ -1198,6 +1199,127 @@ public class GrateCaliandarMain extends JFrame {
             }
             textPane.setVisible(true);
         }).start();
+    }
+
+    private static void gratePamiatekaVernikau(int year) {
+        StringBuilder data = new StringBuilder();
+        int dataP;
+        int monthP;
+        int a = year % 19;
+        int b = year % 4;
+        int cx = year % 7;
+        int ks = year / 100;
+        int p = (13 + 8 * ks) / 25;
+        int q = ks / 4;
+        int m = (15 - p + ks - q) % 30;
+        int n = (4 + ks - q) % 7;
+        int d = (19 * a + m) % 30;
+        int ex = (2 * b + 4 * cx + 6 * d + n) % 7;
+        if (d + ex <= 9) {
+            dataP = d + ex + 22;
+            monthP = 3;
+        } else {
+            dataP = d + ex - 9;
+            if (d == 29 && ex == 6) dataP = 19;
+            if (d == 28 && ex == 6) dataP = 18;
+            monthP = 4;
+        }
+        String[] monthName = {"студзеня", "лютага", "сакавіка", "красавіка", "траўня", "чэрвеня", "ліпеня", "жніўня", "верасьня", "кастрычніка", "лістапада", "сьнежня"};
+        GregorianCalendar calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        int pashaD = calendar.get(Calendar.DAY_OF_MONTH);
+        int pashaM = calendar.get(Calendar.MONTH);
+        calendar.add(Calendar.DATE, -7);
+        int erusalimD = calendar.get(Calendar.DAY_OF_MONTH);
+        int erusalimM = calendar.get(Calendar.MONTH);
+        calendar.add(Calendar.DATE, +46);
+        int uznasenneD = calendar.get(Calendar.DAY_OF_MONTH);
+        int uznasenneM = calendar.get(Calendar.MONTH);
+        calendar.add(Calendar.DATE, +10);
+        int troicaD = calendar.get(Calendar.DAY_OF_MONTH);
+        int troicaM = calendar.get(Calendar.MONTH);
+        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar.add(Calendar.DATE, -70);
+        int postMytnikND = calendar.get(Calendar.DAY_OF_MONTH);
+        int postMytnikNM = calendar.get(Calendar.MONTH);
+        calendar.add(Calendar.DATE, 7);
+        int postMytnikKD = calendar.get(Calendar.DAY_OF_MONTH);
+        int postMytnikKM = calendar.get(Calendar.MONTH);
+        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar.add(Calendar.DATE, 7);
+        int nopostSvetluKD = calendar.get(Calendar.DAY_OF_MONTH);
+        int nopostSvetluKM = calendar.get(Calendar.MONTH);
+        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar.add(Calendar.DATE, 49);
+        int nopostTroicaND = calendar.get(Calendar.DAY_OF_MONTH);
+        int nopostTroicaNM = calendar.get(Calendar.MONTH);
+        calendar.add(Calendar.DATE, 7);
+        int nopostTroicaKD = calendar.get(Calendar.DAY_OF_MONTH);
+        int nopostTroicaKM = calendar.get(Calendar.MONTH);
+        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar.add(Calendar.DATE, 57);
+        int postPetrKD = calendar.get(Calendar.DAY_OF_MONTH);
+        int postPetrKM = calendar.get(Calendar.MONTH);
+        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar.add(Calendar.DATE, -48);
+        int postVialikiND = calendar.get(Calendar.DAY_OF_MONTH);
+        int postVialikiNM = calendar.get(Calendar.MONTH);
+        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar.add(Calendar.DATE, -1);
+        int postVialikiKD = calendar.get(Calendar.DAY_OF_MONTH);
+        int postVialikiKM = calendar.get(Calendar.MONTH);
+        calendar.add(Calendar.DATE, -1);
+        int postVialikaiPiatKD = calendar.get(Calendar.DAY_OF_MONTH);
+        int postVialikaiPiatKM = calendar.get(Calendar.MONTH);
+        data.append("<!DOCTYPE HTML><font color=\"#d00505\"><strong>ЕЎХАРЫСТЫЧНЫ ПОСТ ПЕРАД СЬВЯТЫМ ПРЫЧАСЬЦЕМ</strong></font>\n");
+        data.append("<em>Ня менш за 1 гадзiну перад пачаткам Боскай Літургіі трэба ўстрымацца ад ежы i напояў.</em>\n");
+        data.append("Чыстая вада, а таксама прыём прыпісаных лекаў не забараняецца.\n");
+        data.append("<font color=\"#d00505\"><strong>АДЗНАЧЭНЬНЕ СЬВЯТАЎ</strong></font>\n");
+        data.append("Згодна з кан. 880 Кодэксу Канонаў Усходніх Цэркваў вернікі Беларускай Грэка-Каталіцкай Царквы абавязаны сьвяткаваць, акрамя <strong>кожнай нядзелі</strong>, наступныя царкоўныя сьвяты:\n");
+        data.append("<strong>1.</strong> <em>Сьвяты, якія заўсёды ў нядзелю:</em>\n");
+        data.append("<strong>- Уваход Гасподні ў Ерусалім (Вербніца) ").append(erusalimD).append(" ").append(monthName[erusalimM]).append(";</strong>\n");
+        data.append("<strong>- Уваскрасеньне Хрыстова (Вялiкдзень) ").append(pashaD).append(" ").append(monthName[pashaM]).append(";</strong>\n");
+        data.append("<strong>- Зыход Сьвятога Духа (Тройца) – ").append(troicaD).append(" ").append(monthName[troicaM]).append(";</strong>\n");
+        data.append("<strong>2. Богазьяўленьне (Вадохрышча) – 6 студзеня;</strong>\n");
+        data.append("<strong>3. Дабравешчаньне Найсьвяцейшай Багародзiцы – 25 сакавіка;</strong>\n");
+        data.append("<strong>4. Узьнясеньне Гасподняе (Ушэсьце) – ").append(uznasenneD).append(" ").append(monthName[uznasenneM]).append(";</strong>\n");
+        data.append("<strong>5. Сьвята Вярхоўных Апосталаў Пятра і Паўла – 29 чэрвеня;</strong>\n");
+        data.append("<strong>6. Усьпеньне Найсьвяцейшай Багародзiцы – 15 жніўня;</strong>\n");
+        data.append("<strong>7. Нараджэньне Хрыстова (Раство) – 25 сьнежня.</strong>\n");
+        data.append("У гэтыя царкоўныя сьвяты і ў нядзелі вернiкi <strong>абавязаны браць удзел у сьв. Лiтургii</strong> i ўстрымлівацца ад цяжкай фiзiчнай працы.\n");
+        data.append("Ва ўсе iншыя сьвяты сьвятары адпраўляюць сьв. Лiтургiю для тых, якiя змогуць i пажадаюць сьвяткаваць. Аднак Царква таксама асабліва заахвочвае вернікаў браць удзел у набажэнствах наступных сьвятаў:\n<strong>• Абрэзаньне Гасподняе</strong>, <em>1 студзеня</em>;\n<strong>• Перамяненьне Гасподняе</strong>, <em>6 жніўня</em>;\n<strong>• Нараджэньне Найсьвяцейшай Багародзіцы</strong>, <em>8 верасьня</em>;\n<strong>• Узвышэньне Пачэснага Крыжа Гасподняга (Крыжаўзвышэньне)</strong>, <em>14 верасьня</em>.\n");
+        data.append("<font color=\"#d00505\"><strong>АБАВЯЗКОВЫЯ ПАСТЫ</strong></font>\n");
+        data.append("• <em><strong>Усе пятнiцы</strong> на працягу году вернікі БГКЦ абавязаны ўстрымлiвацца ад мясных страваў.\n");
+        data.append("Посту ў пятніцу няма ў сьвяты Гасподнiя i Багародзiчныя, а таксама ў перыяд:</em>\n");
+        data.append("- ад Раства (25 сьнежня) да Богазьяўленьня (6 студзеня);\n");
+        data.append("- ад Нядзелi мытнiка i фарысея (").append(postMytnikND).append(" ").append(monthName[postMytnikNM]).append(") да Нядзелi блуднага сына (").append(postMytnikKD).append(" ").append(monthName[postMytnikKM]).append("\n");
+        data.append("- ад Вялiкадня (").append(pashaD).append(" ").append(monthName[pashaM]).append(") да Нядзелi Тамаша (").append(nopostSvetluKD).append(" ").append(monthName[nopostSvetluKM]).append("\n");
+        data.append("- ад Тройцы (").append(nopostTroicaND).append(" ").append(monthName[nopostTroicaNM]).append(") да Нядзелi ўсiх сьвятых (").append(nopostTroicaKD).append(" ").append(monthName[nopostTroicaKM]).append(").\n");
+        data.append("<em>• Асаблівы час, калі вернікі прыкладаюць узмоцненыя намаганьні для свайго духоўнага росту, абмяжоўваюць сябе ў ежы, а таксама ўстрымліваюцца ад арганiзацыi публiчных забаў з музыкай i танцамi:</em>\n");
+        data.append("<strong>- Вялiкi пост і Вялікі тыдзень:</strong><em>").append(postVialikiND).append(" ").append(monthName[postVialikiNM]).append(" – ").append(postVialikiKD).append(" ").append(monthName[postVialikiKM]).append(";</em>\n");
+        data.append("<strong>- Пятроўскі пост:</strong><em>").append(postPetrKD).append(" ").append(monthName[postPetrKM]).append(" - 28 чэрвеня;</em>\n");
+        data.append("<strong>- Усьпенскі пост:</strong><em> 1 жніўня - 14 жніўня;</em>\n");
+        data.append("<strong>- Калядны пост (Пiлiпаўка):</strong><em> 15 лістапада – 24 сьнежня.</em>\n");
+        data.append("<strong>Грэка-католiкi абавязаны:</strong>\n");
+        data.append("• <em>Устрымлiвацца ад мясных i малочных страваў:</em>\n");
+        data.append("- у першы дзень Вялiкага посту (").append(postVialikiND).append(" ").append(monthName[postVialikiNM]).append("\n");
+        data.append("- у Вялiкую пятнiцу (").append(postVialikaiPiatKD).append(" ").append(monthName[postVialikaiPiatKM]).append("\n");
+        data.append("• <em>Устрымлiвацца ад мясных страваў i абмяжоўвацца адным пасілкам у дзень:</em>\n");
+        data.append("- у Сьвяты вечар перад Раством (24 сьнежня);\n");
+        data.append("- у Сьвяты вечар перад Богазьяўленьнем (5 студзеня);\n");
+        data.append("- на Ўзвышэньне сьв. Крыжа (14 верасьня);\n");
+        data.append("- на Адсячэньне галавы сьв. Яна Хрысьцiцеля (29 жніўня).\n");
+        data.append("<font color=\"#d00505\"><strong>АД ПОСТУ ЗВОЛЬНЕНЫЯ:</strong></font>\n");
+        data.append("- дзецi да 14 гадоў i тыя, чый узрост больш за 60 гадоў;\n");
+        data.append("- хворыя фiзiчна i душэўна, цяжарныя жанчыны, а таксама тыя, што кормяць грудзьмi;\n");
+        data.append("- тыя, што выздараўлiваюць пасьля цяжкай хваробы;\n");
+        data.append("- тыя, што не распараджаюцца сабой у поўнай меры (напрыклад, тыя, што жывуць у чужых; зьнябожаныя; тыя, што жывуць з ахвяраваньня i г. д.)\n");
+        data.append("Таксама бiскуп i парахi могуць звольнiць верніка ад посту дзеля нейкiх важкiх прычынаў. Спаведнiк можа гэта зрабiць у спавядальнi.");
+        try {
+            FileWriter outputStream = new FileWriter(new File("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw/pamiatka.html"));
+            outputStream.write(data.toString());
+            outputStream.close();
+        } catch (IOException ignored) {
+        }
     }
 
     private static String sviatyPKC(int DayYear, int year) {
