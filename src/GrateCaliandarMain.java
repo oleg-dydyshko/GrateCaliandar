@@ -1295,8 +1295,8 @@ public class GrateCaliandarMain extends JFrame {
         data.append("- ад Вялiкадня (").append(pashaD).append(" ").append(monthName[pashaM]).append(") да Нядзелi Тамаша (").append(nopostSvetluKD).append(" ").append(monthName[nopostSvetluKM]).append("\n");
         data.append("- ад Тройцы (").append(nopostTroicaND).append(" ").append(monthName[nopostTroicaNM]).append(") да Нядзелi ўсiх сьвятых (").append(nopostTroicaKD).append(" ").append(monthName[nopostTroicaKM]).append(").\n");
         data.append("<em>• Асаблівы час, калі вернікі прыкладаюць узмоцненыя намаганьні для свайго духоўнага росту, абмяжоўваюць сябе ў ежы, а таксама ўстрымліваюцца ад арганiзацыi публiчных забаў з музыкай i танцамi:</em>\n");
-        data.append("<strong>- Вялiкi пост і Вялікі тыдзень:</strong><em>").append(postVialikiND).append(" ").append(monthName[postVialikiNM]).append(" – ").append(postVialikiKD).append(" ").append(monthName[postVialikiKM]).append(";</em>\n");
-        data.append("<strong>- Пятроўскі пост:</strong><em>").append(postPetrKD).append(" ").append(monthName[postPetrKM]).append(" - 28 чэрвеня;</em>\n");
+        data.append("<strong>- Вялiкi пост і Вялікі тыдзень:</strong><em> ").append(postVialikiND).append(" ").append(monthName[postVialikiNM]).append(" – ").append(postVialikiKD).append(" ").append(monthName[postVialikiKM]).append(";</em>\n");
+        data.append("<strong>- Пятроўскі пост:</strong><em> ").append(postPetrKD).append(" ").append(monthName[postPetrKM]).append(" - 28 чэрвеня;</em>\n");
         data.append("<strong>- Усьпенскі пост:</strong><em> 1 жніўня - 14 жніўня;</em>\n");
         data.append("<strong>- Калядны пост (Пiлiпаўка):</strong><em> 15 лістапада – 24 сьнежня.</em>\n");
         data.append("<strong>Грэка-католiкi абавязаны:</strong>\n");
