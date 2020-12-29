@@ -100,8 +100,6 @@ public class GrateCaliandarMain extends JFrame {
             get_caliandar_year_min = Integer.parseInt(yearS.getText());
             get_caliandar_year_max = Integer.parseInt(yaerE.getText());
 
-            //File source = new File("/home/oleg/www/carkva/chytanne/sviatyja");
-            //File dest = new File("/home/oleg/AndroidStudioProjects/Malitounik/resources/src/main/res/raw");
             try {
                 if (checkBox2.isSelected()) {
                     StringBuilder sb = new StringBuilder();
@@ -123,8 +121,6 @@ public class GrateCaliandarMain extends JFrame {
                     for (String s : sviatya) {
                         int t1 = s.lastIndexOf("/");
                         File svitya = new File("/home/oleg/www/carkva/chytanne/sviatyja" + s.substring(t1));
-                        //if (s.contains("/chytanne/sviatyja/"))
-                        //svitya = new File("/home/oleg/www/carkva/chytanne/sviatyja" + s.substring(t1));
                         if (s.contains("/chytanne/Semucha/"))
                             svitya = new File("/home/oleg/www/carkva/chytanne/Semucha" + s.substring(t1));
                         if (s.contains("/admin/pesny/"))
@@ -160,7 +156,7 @@ public class GrateCaliandarMain extends JFrame {
                             }
                         }
                         String sviaty = gson.fromJson(stringBuilder.toString(), type2);
-                        FileWriter outputStream = new FileWriter(new File("/home/oleg/www/carkva/calendar-cytanne_" + i + ".php"));
+                        FileWriter outputStream = new FileWriter("/home/oleg/www/carkva/calendar-cytanne_" + i + ".php");
                         outputStream.write(sviaty);
                         outputStream.close();
                     }
@@ -388,7 +384,7 @@ public class GrateCaliandarMain extends JFrame {
                         GregorianCalendar gc = new GregorianCalendar(year, month_p - 1, data_p);
                         gc.add(Calendar.DATE, -71);
                         if (DayYear < gc.get(Calendar.DAY_OF_YEAR) || DayYear > 257) {
-                            sviatyaChtenia = "Прабачьце, няма дадзеных";
+                            sviatyaChtenia = "Прабачце, няма дадзеных";
                             sviaty = new StringBuilder();
                         } else {
                             sviatyaChtenia = caliandar_year.getSviaty(year, DayYear, 1);
@@ -499,14 +495,6 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<strong>Палова сьвята Пяцідзесятніцы</strong>";
                 }
-                /*pasha.set(year, 6, 11);
-                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
-                    predsviaty = "<strong>Успамін забойства полацкіх манахаў-базыльянаў</strong>";
-                }
-                pasha.set(year, 4, 7);
-                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
-                    predsviaty = "<strong>Успамін з'яўленьня знаку Пачэснага Крыжа ў Ерусаліме</strong>";
-                }*/
                 for (int i = 7; i <= 13; i++) {
                     pasha.set(year, 8, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
@@ -951,19 +939,6 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "2";
                     tipicon = "2";
                 }
-                /*calendar_pasha.set(year, 11, 9);
-                i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
-                if (DayYear == i3) {
-                    sviaty = "ЗАЧАЦЬЦЕ  ПРАВЕДНАЙ ГАННЫ  (БЕЗЗАГАННАЕ ЗАЧАЦЬЦЕ НАЙСЬВЯЦЕЙШАЙ БАГАРОДЗІЦЫ)";
-                    if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
-                        cytanneDop = "Лк 24.36-53; Гал 4.22-31; Лк 8.16-21";
-                    } else {
-                        sviatyaChtenia = "Лк 24.36-53; Гал 4.22-31; Лк 8.16-21";
-                    }
-                    post = false;
-                    sviatyDay = "2";
-                    tipicon = "2";
-                }*/
                 // когда выпадают ДВУНАДЗЯСЯТЫЯ СЬВЯТЫ относительно Пасхі, кроме зависящих от неё
                 calendar_pasha.set(year, 0, 6);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
@@ -1142,8 +1117,6 @@ public class GrateCaliandarMain extends JFrame {
                         }
                     }
                 }
-                //if (!vailikia_gadziny.equals(""))
-                //sviatyaChtenia = sviatyaChtenia + "\n" + vailikia_gadziny;
                 sviatyaChtenia = translateToBelarus(sviatyaChtenia);
                 cytanneSV = translateToBelarus(cytanneSV);
                 cytanneDop = translateToBelarus(cytanneDop);
@@ -1179,7 +1152,7 @@ public class GrateCaliandarMain extends JFrame {
                     try {
                         Gson gson = new Gson();
                         String json = gson.toJson(arrayListsNelel);
-                        FileWriter outputStream = new FileWriter(new File("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw/caliandar" + (count2 - 1) + ".json"));
+                        FileWriter outputStream = new FileWriter("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw/caliandar" + (count2 - 1) + ".json");
                         outputStream.write(json);
                         outputStream.close();
                         arrayListsNelel = new ArrayList<>();
@@ -1315,7 +1288,7 @@ public class GrateCaliandarMain extends JFrame {
         data.append("- тыя, што не распараджаюцца сабой у поўнай меры (напрыклад, тыя, што жывуць у чужых; зьнябожаныя; тыя, што жывуць з ахвяраваньня i г. д.)\n");
         data.append("Таксама бiскуп i парахi могуць звольнiць верніка ад посту дзеля нейкiх важкiх прычынаў. Спаведнiк можа гэта зрабiць у спавядальнi.");
         try {
-            FileWriter outputStream = new FileWriter(new File("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw/pamiatka.html"));
+            FileWriter outputStream = new FileWriter("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw/pamiatka.html");
             outputStream.write(data.toString());
             outputStream.close();
         } catch (IOException ignored) {
@@ -1580,9 +1553,6 @@ public class GrateCaliandarMain extends JFrame {
         pravas.set(year, 9, 14);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Покрыва Багародзіцы\n(паводле юльянскага календара)";
-        //pravas.set(year, 11, 22);
-        //if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
-        //    return "Зачацьце праведнай Ганны\n(паводле юльянскага календара)";
         return "";
     }
 
@@ -2103,13 +2073,7 @@ public class GrateCaliandarMain extends JFrame {
         paralel = paralel.replace("Лев", "Ляв");
         paralel = paralel.replace("Чис", "Лікі");
         paralel = paralel.replace("Втор", "Дрг");
-        //paralel = paralel.replace("Нав", "Нав");
-        //paralel = paralel.replace("Суд", "Суд");
         paralel = paralel.replace("Руфь", "Рут");
-        //paralel = paralel.replace("1 Цар", "1 Цар");
-        //paralel = paralel.replace("2 Цар", "2 Цар");
-        //paralel = paralel.replace("3 Цар", "3 Цар");
-        //paralel = paralel.replace("4 Цар", "4 Цар");
         paralel = paralel.replace("1 Пар", "1 Лет");
         paralel = paralel.replace("2 Пар", "2 Лет");
         paralel = paralel.replace("1 Езд", "1 Эзд");
@@ -2128,8 +2092,6 @@ public class GrateCaliandarMain extends JFrame {
         paralel = paralel.replace("Ис", "Іс");
         paralel = paralel.replace("Посл Иер", "Пасл Ер");
         paralel = paralel.replace("Иер", "Ер");
-        //paralel = paralel.replace("Плач", "Плач");
-        //paralel = paralel.replace("Вар", "Бар");
         paralel = paralel.replace("Иез", "Езк");
         //paralel = paralel.replace("Дан", "Дан");
         paralel = paralel.replace("Ос", "Ас");
@@ -2142,15 +2104,8 @@ public class GrateCaliandarMain extends JFrame {
         paralel = paralel.replace("Авв", "Абк");
         paralel = paralel.replace("Соф", "Саф");
         paralel = paralel.replace("Агг", "Аг");
-        //paralel = paralel.replace("Зах", "Зах");
-        //paralel = paralel.replace("Мал", "Мал");
-        //paralel = paralel.replace("1 Мак", "1 Мак");
-        //paralel = paralel.replace("2 Мак", "2 Мак");
-        //paralel = paralel.replace("3 Мак", "3 Мак");
         paralel = paralel.replace("3 Езд", "3 Эзд");
         paralel = paralel.replace("Мф", "Мц");
-        //paralel = paralel.replace("Мк", "Мк");
-        //paralel = paralel.replace("Лк", "Лук");
         paralel = paralel.replace("Ин", "Ян");
         paralel = paralel.replace("Деян", "Дз");
         paralel = paralel.replace("Иак", "Як");
@@ -2167,8 +2122,6 @@ public class GrateCaliandarMain extends JFrame {
         paralel = paralel.replace("Еф", "Эф");
         paralel = paralel.replace("Флп", "Плп");
         paralel = paralel.replace("Кол", "Клс");
-        //paralel = paralel.replace("1 Фес", "1 Фес");
-        //paralel = paralel.replace("2 Фес", "2 Фес");
         paralel = paralel.replace("1 Тим", "1 Цім");
         paralel = paralel.replace("2 Тим", "2 Цім");
         paralel = paralel.replace("Тит", "Ціт");
