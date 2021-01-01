@@ -629,7 +629,7 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     String br = "";
                     if (!sv_per.equals(""))
-                        br = ";<br>";
+                        br = "<br>";
                     sv_per = sv_per + br + "Вялебнага Яна Лесьвічніка";
                     sv_per_ch = "Вялеб.: Эф 5.9-19; Мц 4.25-5.12";
                 }
@@ -638,7 +638,7 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     String br = "";
                     if (!sv_per.equals(""))
-                        br = ";<br>";
+                        br = "<br>";
                     sv_per = sv_per + br + "Вялебнай Марыі Ягіпецкай";
                     sv_per_ch = "Вялеб.: Гал 3.23-29; Лк 7.36-50";
                 }
@@ -648,8 +648,16 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     String br = "";
                     if (!sv_per.equals(""))
-                        br = ";<br>";
+                        br = "<br>";
                     sv_per = sv_per + br + "Вялеб. Касьяна Рымляніна";
+                }
+                pasha.set(year, 8, 1);
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    String br = "";
+                    if (!sv_per.equals(""))
+                        br = "<br>";
+                    sv_per = "<font color=#d00505>Пачатак царкоўнага году</font>" + br + sv_per;
+                    sv_per_ch = "Новаму году.: 2 Цім 2.1-7; Лк 4.16-22";
                 }
 
                 // Памінаньне памёрлых
@@ -780,8 +788,8 @@ public class GrateCaliandarMain extends JFrame {
                 if ((sviatyia_new_o != null && !sviatyia_new_o.equals("")) || !sv_per.equals("")) {
                     String br = "";
                     if (!sviatyia_new_o.equals("") && !sv_per.equals(""))
-                        br = ";<br>";
-                    sviatyiaName = sviatyia_new_o + br + sv_per;
+                        br = "<br>";
+                    sviatyiaName = sv_per + br + sviatyia_new_o;
                 }
 
                 if (sviatyia_new[DayYear][2].equals("7")) {
