@@ -787,9 +787,9 @@ public class GrateCaliandarMain extends JFrame {
                 if (sviatyia_new[DayYear][2].equals("7")) {
                     int sv1 = sviatyiaName.indexOf("$");
                     if (sv1 != -1)
-                        sviatyiaName = "<strong>" + sviatyiaName.substring(0, sv1 + 1) + "</strong>" + sviatyiaName.substring(sv1 + 1);
+                        sviatyiaName = "<font color=#d00505><strong>" + sviatyiaName.substring(0, sv1 + 1) + "</strong></font>" + sviatyiaName.substring(sv1 + 1);
                     else
-                        sviatyiaName = "<strong>" + sviatyiaName + "</strong>";
+                        sviatyiaName = "<font color=#d00505><strong>" + sviatyiaName + "</strong></font>";
                 }
                 if (sviatyia_new[DayYear][2].equals("6")) {
                     int sv1 = sviatyia_new_o.indexOf("$");
@@ -1096,7 +1096,7 @@ public class GrateCaliandarMain extends JFrame {
                 arrayList.add(predsviaty); //Предпраздники 8
 
                 if (!sviatyia_new[DayYear][1].equals("")) {
-                    cytanneSV = sviatyia_new[DayYear][1];
+                    cytanneSV = sviatyia_new[DayYear][1].replace("<br>", "\n");
                 }
                 if (!sv_per_ch.equals("")) {
                     if (cytanneSV.equals(""))
