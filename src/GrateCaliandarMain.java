@@ -1112,7 +1112,7 @@ public class GrateCaliandarMain extends JFrame {
                     else
                         cytanneDop = sv_per_ch;
                 }
-                String ton = "1";
+                String ton = "0";
                 if (Nedel == 1) {
                     if (!sviatyaChtenia.equals("")) {
                         for (int i = 1; i <= 8; i++) {
@@ -1146,10 +1146,16 @@ public class GrateCaliandarMain extends JFrame {
                     if (DayYear < gc.get(Calendar.DAY_OF_YEAR) || DayYear > 257) {
                         arrayList.add(""); // Тон в Воскресенье 20
                     } else {
-                        arrayList.add("Тон " + ton + ". Трапары і кандакі"); // Тон в Воскресенье 20
+                        if (ton.equals("0"))
+                            arrayList.add("");
+                        else
+                            arrayList.add("Тон " + ton + ". Трапары і кандакі"); // Тон в Воскресенье 20
                     }
                 } else {
-                    arrayList.add("Тон " + ton + ". Трапары і кандакі"); // Тон в Воскресенье 20
+                    if (ton.equals("0"))
+                        arrayList.add("");
+                    else
+                        arrayList.add("Тон " + ton + ". Трапары і кандакі"); // Тон в Воскресенье 20
                 }
                 arrayList.add(sviachanni); // Блаславеньні на сьвяты 21
                 arrayListsNelel.add(arrayList);
