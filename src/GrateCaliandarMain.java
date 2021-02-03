@@ -92,6 +92,41 @@ public class GrateCaliandarMain extends JFrame {
         frame.setVisible(true);
     }
 
+    private String checkTraparOrKandak(int day, int mun) {
+        try {
+            File ton = new File("/home/oleg/www/carkva/chytanne/sviatyja/opisanie_sviat.json");
+            InputStream inputStream = new FileInputStream(ton);
+            InputStreamReader isr = new InputStreamReader(inputStream);
+            BufferedReader reader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            Gson gson = new Gson();
+            java.lang.reflect.Type type = new TypeToken<String[][]>() {
+            }.getType();
+            String[][] tony = gson.fromJson(sb.toString(), type);
+            if (!tony[day][3].equals("")) {
+                return "1";
+            }
+            ton = new File("/home/oleg/www/carkva/chytanne/sviatyja/opisanie" + mun + ".json");
+            inputStream = new FileInputStream(ton);
+            isr = new InputStreamReader(inputStream);
+            reader = new BufferedReader(isr);
+            sb = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            tony = gson.fromJson(sb.toString(), type);
+            if (!tony[day - 1][1].equals("")) {
+                return "1";
+            }
+        } catch (Throwable ignored) {
+        }
+        return "0";
+    }
+
     private void grate() {
         textPane.setVisible(false);
         progressBar.setVisible(true);
@@ -1149,15 +1184,16 @@ public class GrateCaliandarMain extends JFrame {
                         if (ton.equals("0"))
                             arrayList.add("");
                         else
-                            arrayList.add("Тон " + ton + ". Трапары і кандакі"); // Тон в Воскресенье 20
+                            arrayList.add("Тон " + ton + "."); // Тон в Воскресенье 20
                     }
                 } else {
                     if (ton.equals("0"))
                         arrayList.add("");
                     else
-                        arrayList.add("Тон " + ton + ". Трапары і кандакі"); // Тон в Воскресенье 20
+                        arrayList.add("Тон " + ton + "."); // Тон в Воскресенье 20
                 }
                 arrayList.add(sviachanni); // Блаславеньні на сьвяты 21
+                arrayList.add(checkTraparOrKandak(c2.get(Calendar.DATE), c2.get(Calendar.MONTH) + 1)); // Есть ли Трапары и Кандаки на Праздники и у Святых 22
                 arrayListsNelel.add(arrayList);
                 arrayList = new ArrayList<>();
 
