@@ -92,7 +92,7 @@ public class GrateCaliandarMain extends JFrame {
         frame.setVisible(true);
     }
 
-    private String checkTraparOrKandak(int day, int mun) {
+    private String checkTraparOrKandak(int day, int mun, String daySviaty, String munSviaty) {
         try {
             File ton = new File("/home/oleg/www/carkva/chytanne/sviatyja/opisanie_sviat.json");
             InputStream inputStream = new FileInputStream(ton);
@@ -107,8 +107,10 @@ public class GrateCaliandarMain extends JFrame {
             java.lang.reflect.Type type = new TypeToken<String[][]>() {
             }.getType();
             String[][] tony = gson.fromJson(sb.toString(), type);
-            if (!tony[day][3].equals("")) {
-                return "1";
+            for (String[] strings : tony) {
+                if (strings[0].equals(daySviaty) && strings[1].equals(munSviaty) && !strings[3].equals("")) {
+                    return "1";
+                }
             }
             ton = new File("/home/oleg/www/carkva/chytanne/sviatyja/opisanie" + mun + ".json");
             inputStream = new FileInputStream(ton);
@@ -1176,8 +1178,8 @@ public class GrateCaliandarMain extends JFrame {
                 arrayList.add(pameplyia); // Умершие 18
                 arrayList.add(sviatyPKC(DayYear, year)); // Римо-каталические праздники 19
 
+                GregorianCalendar gc = new GregorianCalendar(year, month_p - 1, data_p);
                 if (year == get_caliandar_year_max) {
-                    GregorianCalendar gc = new GregorianCalendar(year, month_p - 1, data_p);
                     if (DayYear < gc.get(Calendar.DAY_OF_YEAR) || DayYear > 257) {
                         arrayList.add(""); // Тон в Воскресенье 20
                     } else {
@@ -1193,7 +1195,28 @@ public class GrateCaliandarMain extends JFrame {
                         arrayList.add("Тон " + ton + "."); // Тон в Воскресенье 20
                 }
                 arrayList.add(sviachanni); // Блаславеньні на сьвяты 21
-                arrayList.add(checkTraparOrKandak(c2.get(Calendar.DATE), c2.get(Calendar.MONTH) + 1)); // Есть ли Трапары и Кандаки на Праздники и у Святых 22
+                String datSviaty = String.valueOf(c2.get(Calendar.DATE));
+                String munSviaty = String.valueOf(c2.get(Calendar.MONTH) + 1);
+                if (c2.get(Calendar.DATE) == data_p && c2.get(Calendar.MONTH) == month_p - 1) {
+                    datSviaty = "-1";
+                    munSviaty = "1";
+                }
+                gc.add(Calendar.DATE, -7);
+                if (c2.get(Calendar.DATE) == gc.get(Calendar.DATE) && c2.get(Calendar.MONTH) == gc.get(Calendar.MONTH)) {
+                    datSviaty = "-1";
+                    munSviaty = "0";
+                }
+                gc.add(Calendar.DATE, 46);
+                if (c2.get(Calendar.DATE) == gc.get(Calendar.DATE) && c2.get(Calendar.MONTH) == gc.get(Calendar.MONTH)) {
+                    datSviaty = "-1";
+                    munSviaty = "2";
+                }
+                gc.add(Calendar.DATE, 10);
+                if (c2.get(Calendar.DATE) == gc.get(Calendar.DATE) && c2.get(Calendar.MONTH) == gc.get(Calendar.MONTH)) {
+                    datSviaty = "-1";
+                    munSviaty = "3";
+                }
+                arrayList.add(checkTraparOrKandak(c2.get(Calendar.DATE), c2.get(Calendar.MONTH) + 1, datSviaty, munSviaty)); // Есть ли Трапары и Кандаки на Праздники и у Святых 22
                 arrayListsNelel.add(arrayList);
                 arrayList = new ArrayList<>();
 
