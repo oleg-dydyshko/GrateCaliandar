@@ -92,43 +92,6 @@ public class GrateCaliandarMain extends JFrame {
         frame.setVisible(true);
     }
 
-    private String checkTraparOrKandak(int day, int mun, String daySviaty, String munSviaty) {
-        try {
-            File ton = new File("/home/oleg/www/carkva/chytanne/sviatyja/opisanie_sviat.json");
-            InputStream inputStream = new FileInputStream(ton);
-            InputStreamReader isr = new InputStreamReader(inputStream);
-            BufferedReader reader = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-            Gson gson = new Gson();
-            java.lang.reflect.Type type = new TypeToken<String[][]>() {
-            }.getType();
-            String[][] tony = gson.fromJson(sb.toString(), type);
-            for (String[] strings : tony) {
-                if (strings[0].equals(daySviaty) && strings[1].equals(munSviaty) && !strings[3].equals("")) {
-                    return "1";
-                }
-            }
-            ton = new File("/home/oleg/www/carkva/chytanne/sviatyja/opisanie" + mun + ".json");
-            inputStream = new FileInputStream(ton);
-            isr = new InputStreamReader(inputStream);
-            reader = new BufferedReader(isr);
-            sb = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-            tony = gson.fromJson(sb.toString(), type);
-            if (!tony[day - 1][1].equals("")) {
-                return "1";
-            }
-        } catch (Throwable ignored) {
-        }
-        return "0";
-    }
-
     private void grate() {
         textPane.setVisible(false);
         progressBar.setVisible(true);
@@ -1186,37 +1149,15 @@ public class GrateCaliandarMain extends JFrame {
                         if (ton.equals("0"))
                             arrayList.add("");
                         else
-                            arrayList.add("Тон " + ton + "."); // Тон в Воскресенье 20
+                            arrayList.add("Тон " + ton); // Тон в Воскресенье 20
                     }
                 } else {
                     if (ton.equals("0"))
                         arrayList.add("");
                     else
-                        arrayList.add("Тон " + ton + "."); // Тон в Воскресенье 20
+                        arrayList.add("Тон " + ton); // Тон в Воскресенье 20
                 }
                 arrayList.add(sviachanni); // Блаславеньні на сьвяты 21
-                String datSviaty = String.valueOf(c2.get(Calendar.DATE));
-                String munSviaty = String.valueOf(c2.get(Calendar.MONTH) + 1);
-                if (c2.get(Calendar.DATE) == data_p && c2.get(Calendar.MONTH) == month_p - 1) {
-                    datSviaty = "-1";
-                    munSviaty = "1";
-                }
-                gc.add(Calendar.DATE, -7);
-                if (c2.get(Calendar.DATE) == gc.get(Calendar.DATE) && c2.get(Calendar.MONTH) == gc.get(Calendar.MONTH)) {
-                    datSviaty = "-1";
-                    munSviaty = "0";
-                }
-                gc.add(Calendar.DATE, 46);
-                if (c2.get(Calendar.DATE) == gc.get(Calendar.DATE) && c2.get(Calendar.MONTH) == gc.get(Calendar.MONTH)) {
-                    datSviaty = "-1";
-                    munSviaty = "2";
-                }
-                gc.add(Calendar.DATE, 10);
-                if (c2.get(Calendar.DATE) == gc.get(Calendar.DATE) && c2.get(Calendar.MONTH) == gc.get(Calendar.MONTH)) {
-                    datSviaty = "-1";
-                    munSviaty = "3";
-                }
-                arrayList.add(checkTraparOrKandak(c2.get(Calendar.DATE), c2.get(Calendar.MONTH) + 1, datSviaty, munSviaty)); // Есть ли Трапары и Кандаки на Праздники и у Святых 22
                 arrayListsNelel.add(arrayList);
                 arrayList = new ArrayList<>();
 
