@@ -1158,6 +1158,9 @@ public class GrateCaliandarMain extends JFrame {
                         arrayList.add("Тон " + ton); // Тон в Воскресенье 20
                 }
                 arrayList.add(sviachanni); // Блаславеньні на сьвяты 21
+                GregorianCalendar tdate = new GregorianCalendar(year, c2.get(Calendar.MONTH), c2.get(Calendar.DATE));
+                int raznica = tdate.get(Calendar.DAY_OF_YEAR) - gc.get(Calendar.DAY_OF_YEAR);
+                arrayList.add(String.valueOf(raznica)); // Количество дней до и после Пасхи 22
                 arrayListsNelel.add(arrayList);
                 arrayList = new ArrayList<>();
 
