@@ -92,6 +92,31 @@ public class GrateCaliandarMain extends JFrame {
         frame.setVisible(true);
     }
 
+    private String checkSviatyia(int day, int mun) {
+        String result = "0";
+        try {
+            File svitya = new File("/home/oleg/www/carkva/chytanne/sviatyja/opisanie" + mun + ".json");
+            InputStream inputStream = new FileInputStream(svitya);
+            InputStreamReader isr = new InputStreamReader(inputStream);
+            BufferedReader reader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            inputStream.close();
+            Gson gson = new Gson();
+            java.lang.reflect.Type type = new TypeToken<ArrayList<String>>() {
+            }.getType();
+            ArrayList<String> sviaty = gson.fromJson(sb.toString(), type);
+            String res = sviaty.get(day - 1).toLowerCase();
+            if (res.contains("трапар") || res.contains("кандак"))
+                result = "1";
+        } catch (IOException ignored) {
+        }
+        return result;
+    }
+
     private void grate() {
         textPane.setVisible(false);
         progressBar.setVisible(true);
@@ -1157,6 +1182,7 @@ public class GrateCaliandarMain extends JFrame {
                 GregorianCalendar tdate = new GregorianCalendar(year, c2.get(Calendar.MONTH), c2.get(Calendar.DATE));
                 int raznica = tdate.get(Calendar.DAY_OF_YEAR) - gc.get(Calendar.DAY_OF_YEAR);
                 arrayList.add(String.valueOf(raznica)); // Количество дней до и после Пасхи 22
+                arrayList.add(checkSviatyia(c2.get(Calendar.DATE), c2.get(Calendar.MONTH) + 1)); // Есть(1) или нету(0) изменяемые части у Святых 23
                 arrayListsNelel.add(arrayList);
                 arrayList = new ArrayList<>();
 
