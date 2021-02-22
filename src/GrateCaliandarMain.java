@@ -26,7 +26,7 @@ public class GrateCaliandarMain extends JFrame {
     private JButton textPane;
     private JButton button;
     private goButon goButon;
-    private JCheckBox checkBox, checkBox2;
+    private JCheckBox checkBox2;
     private JTextField yearS, yaerE;
 
     public static void main(String[] args) {
@@ -49,14 +49,11 @@ public class GrateCaliandarMain extends JFrame {
         JPanel panel1 = new JPanel();
         JPanel panel2 = new JPanel();
         panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
-        checkBox = new JCheckBox();
-        checkBox.setText("Стварыць каляндар на " + (c.get(Calendar.YEAR) + 1) + " год");
         checkBox2 = new JCheckBox();
         checkBox2.setText("Запампаваць файлы з сайта");
         checkBox2.setSelected(true);
         button = new JButton("Стварыць Каляндар");
         panel2.add(button);
-        panel2.add(checkBox);
         panel2.add(checkBox2);
         progressBar = new JProgressBar();
         progressBar.setIndeterminate(true);
@@ -88,7 +85,7 @@ public class GrateCaliandarMain extends JFrame {
         frame.getContentPane().add(BorderLayout.NORTH, panel2);
         frame.getContentPane().add(BorderLayout.WEST, panel);
         frame.getContentPane().add(BorderLayout.SOUTH, panel1);
-        frame.setSize(300, 200);
+        frame.setSize(300, 150);
         frame.setVisible(true);
     }
 
@@ -1235,11 +1232,6 @@ public class GrateCaliandarMain extends JFrame {
             gratePamiatekaVernikau(get_caliandar_year_max - 1);
             progressBar.setVisible(false);
             button.addActionListener(goButon);
-            if (checkBox.isSelected()) {
-                chtenia chtenia = new chtenia();
-                String count = chtenia.main(c.get(Calendar.YEAR) + 1);
-                textPane.setText("Гатова! Створана " + count + " дзен");
-            }
             textPane.setVisible(true);
         }).start();
     }
