@@ -185,7 +185,7 @@ public class GrateCaliandarMain extends JFrame {
                         if (s.contains("/admin/pesny"))
                             FileUtils.copyFile(svitya, new File("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw" + s.substring(t1)));
                         File destFile = new File("/home/oleg/AndroidStudioProjects/Malitounik/resources/src/main/res/raw" + s.substring(t1));
-                        if (s.contains("/chytanne/sviatyja/") || s.contains("/admin/parafii_bgkc/") || s.contains("/chytanne/Semucha/") || s.contains("/admin/prynagodnyia/") || s.contains("/admin/bogashlugbovya/")) {
+                        if (s.contains("/admin/parafii_bgkc/") || s.contains("/chytanne/Semucha/") || s.contains("/admin/prynagodnyia/") || s.contains("/admin/bogashlugbovya/")) {
                             FileUtils.copyFile(svitya, destFile);
                         }
                     }
