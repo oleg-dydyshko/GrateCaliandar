@@ -191,7 +191,6 @@ public class GrateCaliandarMain extends JFrame {
                     }
                     FileUtils.copyURLToFile(new URL("https://carkva-gazeta.by/calendarsviatyia.txt"), new File("/home/oleg/www/carkva/calendarsviatyia.txt"));
                     FileUtils.copyURLToFile(new URL("https://carkva-gazeta.by/opisanie_sviat.json"), new File("/home/oleg/www/carkva/opisanie_sviat.json"));
-                    FileUtils.copyFile(new File("/home/oleg/www/carkva/opisanie_sviat.json"), new File("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw/opisanie_sviat.json"));
                     java.lang.reflect.Type type2 = new TypeToken<String>() {
                     }.getType();
                     for (int i = get_caliandar_year_min; i <= get_caliandar_year_max; i++) {
