@@ -41,8 +41,10 @@ public class GrateCaliandarMain extends JFrame {
         JFrame frame = new JFrame();
         try {
             URL resource = getClass().getResource("res/krest.png");
-            BufferedImage image = ImageIO.read(resource);
-            frame.setIconImage(image);
+            if (resource != null) {
+                BufferedImage image = ImageIO.read(resource);
+                frame.setIconImage(image);
+            }
         } catch (IOException ignored) {
         }
         JPanel panel = new JPanel();
@@ -181,11 +183,15 @@ public class GrateCaliandarMain extends JFrame {
                             svitya = new File("/home/oleg/www/carkva/admin/prynagodnyia" + s.substring(t1));
                         if (s.contains("/admin/bogashlugbovya/"))
                             svitya = new File("/home/oleg/www/carkva/admin/bogashlugbovya" + s.substring(t1));
+                        if (s.contains("/admin/zmenyia_chastki_liturgii/"))
+                            svitya = new File("/home/oleg/www/carkva/admin/zmenyia_chastki_liturgii" + s.substring(t1));
+                        if (s.contains("/admin/piasochnica/"))
+                            svitya = new File("/home/oleg/www/carkva/admin/piasochnica" + s.substring(t1));
                         FileUtils.copyURLToFile(new URL(s), svitya);
                         if (s.contains("/admin/pesny"))
                             FileUtils.copyFile(svitya, new File("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw" + s.substring(t1)));
                         File destFile = new File("/home/oleg/AndroidStudioProjects/Malitounik/resources/src/main/res/raw" + s.substring(t1));
-                        if (s.contains("/admin/parafii_bgkc/") || s.contains("/chytanne/Semucha/") || s.contains("/admin/prynagodnyia/") || s.contains("/admin/bogashlugbovya/")) {
+                        if (s.contains("/admin/parafii_bgkc/") || s.contains("/chytanne/Semucha/") || s.contains("/admin/prynagodnyia/") || s.contains("/admin/bogashlugbovya/") || s.contains("/admin/zmenyia_chastki_liturgii/")) {
                             FileUtils.copyFile(svitya, destFile);
                         }
                     }
