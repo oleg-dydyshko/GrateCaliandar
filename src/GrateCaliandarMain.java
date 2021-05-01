@@ -11,7 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -26,7 +28,7 @@ public class GrateCaliandarMain extends JFrame {
     private JButton textPane;
     private JButton button;
     private goButon goButon;
-    private JCheckBox checkBox2;
+    private JCheckBox checkBox2, checkBox3;
     private JTextField yearS, yaerE;
 
     public static void main(String[] args) {
@@ -54,9 +56,13 @@ public class GrateCaliandarMain extends JFrame {
         checkBox2 = new JCheckBox();
         checkBox2.setText("Запампаваць файлы з сайта");
         checkBox2.setSelected(true);
+        checkBox3 = new JCheckBox();
+        checkBox3.setText("Рэзервовае капіраваньне файлаў сайта");
+        checkBox3.setSelected(false);
         button = new JButton("Стварыць Каляндар");
         panel2.add(button);
         panel2.add(checkBox2);
+        panel2.add(checkBox3);
         progressBar = new JProgressBar();
         progressBar.setIndeterminate(true);
         progressBar.setVisible(false);
@@ -87,7 +93,7 @@ public class GrateCaliandarMain extends JFrame {
         frame.getContentPane().add(BorderLayout.NORTH, panel2);
         frame.getContentPane().add(BorderLayout.WEST, panel);
         frame.getContentPane().add(BorderLayout.SOUTH, panel1);
-        frame.setSize(300, 150);
+        frame.setSize(300, 200);
         frame.setVisible(true);
     }
 
@@ -144,6 +150,42 @@ public class GrateCaliandarMain extends JFrame {
         return result;
     }
 
+    private void backCopySiteCarkva() {
+        try {
+            int responseCodeS;
+            String reqParam = URLEncoder.encode("saveProgram", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8");
+            URL mURL = new URL("https://carkva-gazeta.by/admin/backup.php");
+            HttpURLConnection connection = (HttpURLConnection) mURL.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream());
+            osw.write(reqParam);
+            osw.flush();
+            responseCodeS = connection.getResponseCode();
+            if (responseCodeS == 200) {
+                StringBuilder sb = new StringBuilder();
+                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String line = br.readLine();
+                while (line != null) {
+                    sb.append(line);
+                    line = br.readLine();
+                }
+                Gson gson = new Gson();
+                java.lang.reflect.Type type = new TypeToken<String[]>() {
+                }.getType();
+                String[] result = gson.fromJson(sb.toString(), type);
+                for (String url : result) {
+                    String path = url.replace("https://carkva-gazeta.by/", "/home/oleg/www/carkva/");
+                    File file = new File(path);
+                    if (!file.exists() || path.contains(".sql")) {
+                        FileUtils.copyURLToFile(new URL(url), file);
+                    }
+                }
+            }
+        } catch (Throwable ignored) {
+        }
+    }
+
     private void grate() {
         textPane.setVisible(false);
         progressBar.setVisible(true);
@@ -151,7 +193,9 @@ public class GrateCaliandarMain extends JFrame {
         new Thread(() -> {
             get_caliandar_year_min = Integer.parseInt(yearS.getText());
             get_caliandar_year_max = Integer.parseInt(yaerE.getText());
-
+            if (checkBox3.isSelected()) {
+                backCopySiteCarkva();
+            }
             try {
                 if (checkBox2.isSelected()) {
                     StringBuilder sb = new StringBuilder();
