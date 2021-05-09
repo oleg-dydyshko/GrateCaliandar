@@ -93,7 +93,7 @@ public class GrateCaliandarMain extends JFrame {
         frame.getContentPane().add(BorderLayout.NORTH, panel2);
         frame.getContentPane().add(BorderLayout.WEST, panel);
         frame.getContentPane().add(BorderLayout.SOUTH, panel1);
-        frame.setSize(300, 200);
+        frame.setSize(300, 180);
         frame.setVisible(true);
     }
 
@@ -177,7 +177,7 @@ public class GrateCaliandarMain extends JFrame {
                 for (String url : result) {
                     String path = url.replace("https://carkva-gazeta.by/", "/home/oleg/www/carkva/");
                     File file = new File(path);
-                    if (!file.exists() || path.contains(".sql")) {
+                    if (!file.exists() || path.contains(".sql") || path.contains(".xml")) {
                         FileUtils.copyURLToFile(new URL(url), file);
                     }
                 }
