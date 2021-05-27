@@ -38,7 +38,7 @@ public class GrateCaliandarMain extends JFrame {
 
     private void go() {
         GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
-        get_caliandar_year_min = c.get(Calendar.YEAR) - 3;
+        get_caliandar_year_min = c.get(Calendar.YEAR) - 2;
         get_caliandar_year_max = c.get(Calendar.YEAR) + 1;
         JFrame frame = new JFrame();
         try {
@@ -268,14 +268,13 @@ public class GrateCaliandarMain extends JFrame {
 
             GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
 
-            int count2 = 1;
             int dayyear = 0;
             for (int i = get_caliandar_year_min; i <= get_caliandar_year_max; i++) {
                 if (c.isLeapYear(i)) dayyear = 366 + dayyear;
                 else dayyear = 365 + dayyear;
             }
             GregorianCalendar c2 = new GregorianCalendar(get_caliandar_year_min, 0, 1);
-            int Mun = c2.get(Calendar.MONTH);
+            //int Year = c2.get(Calendar.YEAR);
 
             ArrayList<String> arrayList = new ArrayList<>();
             ArrayList<ArrayList<String>> arrayListsNelel = new ArrayList<>();
@@ -1260,23 +1259,20 @@ public class GrateCaliandarMain extends JFrame {
                 int raznica = tdate.get(Calendar.DAY_OF_YEAR) - gc.get(Calendar.DAY_OF_YEAR);
                 arrayList.add(String.valueOf(raznica)); // Количество дней до и после Пасхи 22
                 arrayList.add(checkSviatyiaZmennyiaChastki(c2.get(Calendar.DATE), c2.get(Calendar.MONTH) + 1)); // Есть(1) или нету(0) изменяемые части у Святых 23
+                arrayList.add(String.valueOf(c2.get(Calendar.DAY_OF_YEAR))); // День в году 24
+                //arrayList.add(String.valueOf(e - 1));  Номер позиции в адапторе 25
                 arrayListsNelel.add(arrayList);
                 arrayList = new ArrayList<>();
 
                 c2.add(Calendar.DATE, 1);
-                if (c2.get(Calendar.MONTH) != Mun) {
-                    try {
-                        Gson gson = new Gson();
-                        String json = gson.toJson(arrayListsNelel);
-                        FileWriter outputStream = new FileWriter("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw/caliandar" + (count2 - 1) + ".json");
-                        outputStream.write(json);
-                        outputStream.close();
-                        arrayListsNelel = new ArrayList<>();
-                    } catch (IOException ignored) {
-                    }
-                    count2++;
-                    Mun = c2.get(Calendar.MONTH);
-                }
+            }
+            try {
+                Gson gson = new Gson();
+                String json = gson.toJson(arrayListsNelel);
+                FileWriter outputStream = new FileWriter("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw/caliandar.json");
+                outputStream.write(json);
+                outputStream.close();
+            } catch (IOException ignored) {
             }
             gratePamiatekaVernikau(get_caliandar_year_max - 1);
             progressBar.setVisible(false);
