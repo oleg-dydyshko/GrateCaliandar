@@ -278,7 +278,9 @@ public class GrateCaliandarMain extends JFrame {
 
             ArrayList<String> arrayList = new ArrayList<>();
             ArrayList<ArrayList<String>> arrayListsNelel = new ArrayList<>();
-
+            int niadzeliaAdapter = 0;
+            int munAdapter = 0;
+            int mun = c2.get(Calendar.MONTH);
             for (int e = 1; e <= dayyear; e++) {
                 String postBild = "0";
                 StringBuilder sviaty = new StringBuilder();
@@ -392,7 +394,9 @@ public class GrateCaliandarMain extends JFrame {
                 String sviatyaChtenia = "";
                 String cytanneDop = "";
 
-                String sv_per = "", sv_per_ch = "", predsviaty = ""; //vailikia_gadziny = "";
+                StringBuilder sv_per = new StringBuilder(); //vailikia_gadziny = "";
+                String sv_per_ch = "";
+                String predsviaty = "";
                 if (caliandar_year.getSviaty(year, DayYear, 0) != null) {
                     sviaty = new StringBuilder(caliandar_year.getSviaty(year, DayYear, 0));
                     if (caliandar_year.getSviaty(year, DayYear, 2).equals("4")) {
@@ -720,7 +724,7 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     GregorianCalendar vtt = new GregorianCalendar(year, 1, 17);
                     if (vtt.get(Calendar.DAY_OF_YEAR) - 1 != pasha.get(Calendar.DAY_OF_YEAR)) {
-                        sv_per = "Вялікамуч. Тодара Тырона";
+                        sv_per = new StringBuilder("Вялікамуч. Тодара Тырона");
                         sv_per_ch = "Вялікамуч.: 2 Цім 2.1-10; Ян 15.17-16.2";
                     }
                 }
@@ -728,18 +732,18 @@ public class GrateCaliandarMain extends JFrame {
                 pasha.add(Calendar.DATE, -22);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     String br = "";
-                    if (!sv_per.equals(""))
+                    if (!sv_per.toString().equals(""))
                         br = "<br>";
-                    sv_per = sv_per + br + "Вялебнага Яна Лесьвічніка";
+                    sv_per.append(br).append("Вялебнага Яна Лесьвічніка");
                     sv_per_ch = "Вялеб.: Эф 5.9-19; Мц 4.25-5.12";
                 }
                 pasha.set(year, month_p - 1, data_p);
                 pasha.add(Calendar.DATE, -15);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     String br = "";
-                    if (!sv_per.equals(""))
+                    if (!sv_per.toString().equals(""))
                         br = "<br>";
-                    sv_per = sv_per + br + "Вялебнай Марыі Ягіпецкай";
+                    sv_per.append(br).append("Вялебнай Марыі Ягіпецкай");
                     sv_per_ch = "Вялеб.: Гал 3.23-29; Лк 7.36-50";
                 }
                 pasha.set(year, 1, 28);
@@ -747,16 +751,16 @@ public class GrateCaliandarMain extends JFrame {
                     pasha.add(Calendar.DATE, 1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     String br = "";
-                    if (!sv_per.equals(""))
+                    if (!sv_per.toString().equals(""))
                         br = "<br>";
-                    sv_per = sv_per + br + "Вялеб. Касьяна Рымляніна";
+                    sv_per.append(br).append("Вялеб. Касьяна Рымляніна");
                 }
                 pasha.set(year, 8, 1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     String br = "";
-                    if (!sv_per.equals(""))
+                    if (!sv_per.toString().equals(""))
                         br = "<br>";
-                    sv_per = "<font color=#d00505>Пачатак царкоўнага году</font>" + br + sv_per;
+                    sv_per.insert(0, "<font color=#d00505>Пачатак царкоўнага году</font>" + br);
                     sv_per_ch = "Новаму году.: 2 Цім 2.1-7; Лк 4.16-22";
                 }
 
@@ -885,9 +889,9 @@ public class GrateCaliandarMain extends JFrame {
                     int t1 = sviatyia_new_o.indexOf("+");
                     sviatyia_new_o = sviatyia_new_o.substring(t1 + 1).trim();
                 }
-                if ((sviatyia_new_o != null && !sviatyia_new_o.equals("")) || !sv_per.equals("")) {
+                if ((sviatyia_new_o != null && !sviatyia_new_o.equals("")) || !sv_per.toString().equals("")) {
                     String br = "";
-                    if (!sviatyia_new_o.equals("") && !sv_per.equals(""))
+                    if (!sviatyia_new_o.equals("") && !sv_per.toString().equals(""))
                         br = "<br>";
                     sviatyiaName = sv_per + br + sviatyia_new_o;
                 }
@@ -1186,6 +1190,12 @@ public class GrateCaliandarMain extends JFrame {
                         cytanneSV = "Айцам.: Габ 13.7-16; Ян 17.1-13";
                     }
                 }
+                if (Nedel == Calendar.SUNDAY)
+                    niadzeliaAdapter++;
+                if (mun != c2.get(Calendar.MONTH)) {
+                    mun = c2.get(Calendar.MONTH);
+                    munAdapter++;
+                }
                 arrayList.add(String.valueOf(Nedel)); //День недели 0
                 arrayList.add(String.valueOf(c2.get(Calendar.DATE))); // Дата 1
                 arrayList.add(String.valueOf(c2.get(Calendar.MONTH))); // Месяц 2
@@ -1260,10 +1270,11 @@ public class GrateCaliandarMain extends JFrame {
                 arrayList.add(String.valueOf(raznica)); // Количество дней до и после Пасхи 22
                 arrayList.add(checkSviatyiaZmennyiaChastki(c2.get(Calendar.DATE), c2.get(Calendar.MONTH) + 1)); // Есть(1) или нету(0) изменяемые части у Святых 23
                 arrayList.add(String.valueOf(c2.get(Calendar.DAY_OF_YEAR))); // День в году 24
-                //arrayList.add(String.valueOf(e - 1));  Номер позиции в адапторе 25
+                arrayList.add(String.valueOf(e - 1)); //Номер позиции в адапторе 25
+                arrayList.add(String.valueOf(niadzeliaAdapter)); //Номер позиции в недельном адапторе 26
+                arrayList.add(String.valueOf(munAdapter)); //Номер позиции в месячном адапторе 27
                 arrayListsNelel.add(arrayList);
                 arrayList = new ArrayList<>();
-
                 c2.add(Calendar.DATE, 1);
             }
             try {
