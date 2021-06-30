@@ -114,6 +114,8 @@ public class GrateCaliandarMain extends JFrame {
             }.getType();
             ArrayList<String> sviaty = gson.fromJson(sb.toString(), type);
             String sv = sviaty.get(day - 1);
+            if (sv.equals(""))
+                return false;
             int t1 = sv.indexOf("<p>");
             String rs = sv.substring(t1 + 3).trim();
             if (rs.equals(""))
