@@ -887,10 +887,6 @@ public class GrateCaliandarMain extends JFrame {
                     sviachanni = "Блаславеньне духмяных зёлак";
                 }
                 String sviatyia_new_o = sviatyia_new[DayYear][0];
-                if (sviatyia_new_o != null && sviatyia_new_o.contains("+")) {
-                    int t1 = sviatyia_new_o.indexOf("+");
-                    sviatyia_new_o = sviatyia_new_o.substring(t1 + 1).trim();
-                }
                 if ((sviatyia_new_o != null && !sviatyia_new_o.equals("")) || !sv_per.toString().equals("")) {
                     String br = "";
                     if (!sviatyia_new_o.equals("") && !sv_per.toString().equals(""))
