@@ -759,6 +759,20 @@ public class GrateCaliandarMain extends JFrame {
                         br = "<br>";
                     sv_per.append(br).append("Вялеб. Касьяна Рымляніна");
                 }
+                Integer[] dnuShesty = {13, 14, 15, 16, 17, 18, 19};
+                for (int dny : dnuShesty) {
+                    pasha.set(year, 6, dny);
+                    int wik = pasha.get(Calendar.DAY_OF_WEEK);
+                    if (wik == Calendar.SUNDAY) {
+                        if (pasha.get(Calendar.DAY_OF_YEAR) - 1 == DayYear) {
+                            String br = "";
+                            if (!sv_per.toString().equals(""))
+                                br = "<br>";
+                            sv_per.append(br).append("Айцоў першых 6-ці Ўсяленскіх сабораў");
+                            sv_per_ch = "Айцам.: Гбр 13.7-16; Ян 17.1-13";
+                        }
+                    }
+                }
                 pasha.set(year, 8, 1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     String br = "";
