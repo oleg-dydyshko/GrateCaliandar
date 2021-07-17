@@ -233,6 +233,8 @@ public class GrateCaliandarMain extends JFrame {
                             svitya = new File("/home/oleg/www/carkva/admin/zmenyia_chastki_liturgii" + s.substring(t1));
                         if (s.contains("/admin/piasochnica/"))
                             svitya = new File("/home/oleg/www/carkva/admin/piasochnica" + s.substring(t1));
+                        if (s.contains("/chytanne/icons/"))
+                            svitya = new File("/home/oleg/www/carkva/chytanne/icons/" + s.substring(t1));
                         FileUtils.copyURLToFile(new URL(s), svitya);
                         if (s.contains("/admin/pesny"))
                             FileUtils.copyFile(svitya, new File("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/src/main/res/raw" + s.substring(t1)));
