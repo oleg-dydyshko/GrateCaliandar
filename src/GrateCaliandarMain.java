@@ -120,7 +120,8 @@ public class GrateCaliandarMain extends JFrame {
             String rs = sv.substring(t1 + 3).trim();
             if (rs.equals(""))
                 return false;
-        } catch (IOException ignored) {
+        } catch (Throwable ignored) {
+            return true;
         }
         return true;
     }
@@ -147,7 +148,8 @@ public class GrateCaliandarMain extends JFrame {
                 if (res.contains("трапар") || res.contains("кандак"))
                     result = "1";
             }
-        } catch (IOException ignored) {
+        } catch (Throwable ignored) {
+            result = "0";
         }
         return result;
     }
