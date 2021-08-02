@@ -378,22 +378,22 @@ public class GrateCaliandarMain extends JFrame {
                 if (i2 >= syrny + 4 && i2 <= syrny + 6) {
                     addanne_sviata_Sustrechy = syrny + 6;
                 }
-                if (caliandar_year.getSviaty(year, DayYear, 2) != null && !caliandar_year.getSviaty(year, DayYear, 2).equals("") && caliandar_year.getSviaty(year, DayYear, 2).equals("5")) {
+                if (caliandar_year.getSviaty(year, DayYear, 2) != null && !caliandar_year.getSviaty(year, DayYear, 2).equals("") && caliandar_year.getSviaty(year, DayYear, 2).equals("5") && Nedel != Calendar.SATURDAY) {
                     postBild = "1";
                 }
                 boolean post = true;
-                if (!(Nedel == 1 || Nedel == 7)) {
+                if (!(Nedel == Calendar.SUNDAY || Nedel == Calendar.SATURDAY)) {
                     if (DayYear <= 3 || DayYear >= 359 || (mytnik <= DayYear && DayYear <= mytnik + 4) || (syrny <= DayYear && DayYear <= syrny + 4) || (svetly <= DayYear && DayYear <= svetly + 4) || (traechki <= DayYear && DayYear <= traechki + 4)) {
                         postBild = "1";
                         post = false;
                     }
                 }
-                if (!(Nedel == 1 || Nedel == 7)) {
+                if (!(Nedel == Calendar.SUNDAY || Nedel == Calendar.SATURDAY)) {
                     if ((VialikiPost <= DayYear && DayYear <= Pasxa - 2) || (Pasxa + 56 <= DayYear && DayYear <= Pavel - 2) || (uspenieN - 1 <= DayYear && DayYear <= uspenieK - 2) || (kaladyN - 1 <= DayYear && DayYear <= kaladyK - 2)) {
                         postBild = "2";
                     }
                 }
-                if (Nedel == 1) {
+                if (Nedel == Calendar.SUNDAY) {
                     postBild = "0";
                 }
                 // чтения
@@ -992,30 +992,36 @@ public class GrateCaliandarMain extends JFrame {
                 // Переходящие праздники
                 if (DayYear == pasxa) {
                     post = false;
+                    postBild = "0";
                 }
                 if (DayYear == uvachod) {
                     post = false;
+                    postBild = "0";
                 }
                 if (DayYear == uzniasenne) {
                     post = false;
+                    postBild = "0";
                 }
                 if (DayYear == troica) {
                     post = false;
+                    postBild = "0";
                 }
                 if (DayYear == denSvDuxa) {
                     post = false;
+                    postBild = "0";
                 }
                 // когда выпадают ВЯЛІКІЯ СЬВЯТЫ относительно Пасхі
                 GregorianCalendar calendar_pasha = new GregorianCalendar(year, 0, 1);
                 int i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("АБРЭЗАНЬНЕ ГАСПОДНЯЕ");
-                    if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
+                    if (Nedel == Calendar.SUNDAY && !sviatyaChtenia.isEmpty()) {
                         cytanneDop = "На ютрані: Ян 10.9-16;\nКал 2.8-12; Лк 2.20-21, 40-52";
                     } else {
                         sviatyaChtenia = "На ютрані: Ян 10.9-16;\nКал 2.8-12; Лк 2.20-21, 40-52";
                     }
                     post = false;
+                    postBild = "0";
                     sviatyDay = "2";
                     tipicon = "2";
                 }
@@ -1023,12 +1029,13 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("НАРАДЖЭНЬНЕ СЬВ. ЯНА ПРАДВЕСЬНІКА І ХРЫСЬЦІЦЕЛЯ ГАСПОДНЯГА");
-                    if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
+                    if (Nedel == Calendar.SUNDAY && !sviatyaChtenia.isEmpty()) {
                         cytanneDop = "На ютрані: Лк 1.24-25, 57-68, 76, 80;\nРым 13.12-14.4; Лк 1.5-25, 57-68, 76, 80";
                     } else {
                         sviatyaChtenia = "На ютрані: Лк 1.24-25, 57-68, 76, 80;\nРым 13.12-14.4; Лк 1.5-25, 57-68, 76, 80";
                     }
                     post = false;
+                    postBild = "0";
                     sviatyDay = "2";
                     tipicon = "2";
                 }
@@ -1036,12 +1043,13 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("СЬВЯТЫХ СЛАЎНЫХ І ЎСЯХВАЛЬНЫХ ВЯРХОЎНЫХ АПОСТАЛАЎ ПЯТРА І ПАЎЛА");
-                    if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
+                    if (Nedel == Calendar.SUNDAY && !sviatyaChtenia.isEmpty()) {
                         cytanneDop = "На ютрані: Ян 21.15-25;\n2 Кар 11.21-12.9; Мц 16.13-19";
                     } else {
                         sviatyaChtenia = "На ютрані: Ян 21.15-25;\n2 Кар 11.21-12.9; Мц 16.13-19";
                     }
                     post = false;
+                    postBild = "0";
                     sviatyDay = "2";
                     tipicon = "2";
                 }
@@ -1049,11 +1057,13 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("АДСЯЧЭНЬНЕ ГАЛАВЫ СЬВ. ЯНА ПРАДВЕСЬНІКА І ХРЫСЬЦІЦЕЛЯ");
-                    if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
+                    if (Nedel == Calendar.SUNDAY && !sviatyaChtenia.isEmpty()) {
                         cytanneDop = "На ютрані: Мц 14.1-13;\nДз 13.25-32; Мк 6.14-30";
                     } else {
                         sviatyaChtenia = "На ютрані: Мц 14.1-13;\nДз 13.25-32; Мк 6.14-30";
                     }
+                    post = false;
+                    postBild = "0";
                     sviatyDay = "2";
                     tipicon = "2";
                 }
@@ -1061,12 +1071,13 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("ПОКРЫВА НАЙСЬВЯЦЕЙШАЙ БАГАРОДЗІЦЫ");
-                    if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
+                    if (Nedel == Calendar.SUNDAY && !sviatyaChtenia.isEmpty()) {
                         cytanneDop = "На ютрані: Лк 1.39-49, 56;\nГаб 9.1-7; Лк 10.38-42, 11.27-28";
                     } else {
                         sviatyaChtenia = "На ютрані: Лк 1.39-49, 56;\nГаб 9.1-7; Лк 10.38-42, 11.27-28";
                     }
                     post = false;
+                    postBild = "0";
                     sviatyDay = "2";
                     tipicon = "2";
                 }
@@ -1076,6 +1087,7 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("БОГАЗЬЯЎЛЕНЬНЕ (Вадохрышча)");
                     post = false;
+                    postBild = "0";
                     sviatyaChtenia = "На ютрані: Мк 1.9-11;\nЦіт 2.11-14, 3.4-7; Мц 3.13-17";
                     sv_per_ch = "На асьвячэньне вады: 1 Кар 10.1-4; Мк 1.9-11";
                     sviatyDay = "1";
@@ -1085,6 +1097,7 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
+                    postBild = "0";
                     if (calendar_pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                         sviaty.append("\n").append("\nСУСТРЭЧА ГОСПАДА НАШАГА ІСУСА ХРЫСТА (ГРАМНІЦЫ)");
                         cytanneDop = "Сустрэчы: Габ 7.7-17; Лк 2.22-40";
@@ -1102,7 +1115,8 @@ public class GrateCaliandarMain extends JFrame {
                     int bagar = calendar_pasha.get(Calendar.DAY_OF_WEEK);
                     if (bagar == 1) linurgia = "Літургія сьв. Васіля Вялікага";
                     post = false;
-                    if (DayYear >= Pasxa - 8 && DayYear <= Pasxa || Nedel == 1) {
+                    postBild = "0";
+                    if (DayYear >= Pasxa - 8 && DayYear <= Pasxa || Nedel == Calendar.SUNDAY) {
                         sviaty.append("\n").append("\nДАБРАВЕШЧАНЬНЕ НАЙСЬВЯЦЕЙШАЙ БАГАРОДЗІЦЫ");
                         cytanneDop = "Дабравешчаньне: Тон 8. На ютрані: Лк 1.39-49, 56;\nГаб 9.11-14; Мк 10.32-45;\n" + linurgia + " Габ 2.11-18; Лк 1.24-38";
                     } else {
@@ -1117,6 +1131,7 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
+                    postBild = "0";
                     sviaty = new StringBuilder("ПЕРАМЯНЕНЬНЕ ГОСПАДА НАШАГА ІСУСА ХРЫСТА");
                     sviatyaChtenia = "На ютрані: Лк 9.28-36;\n2 Пт 1.10-19; Мц 17.1-9";
                     sviatyDay = "1";
@@ -1126,8 +1141,9 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
+                    postBild = "0";
                     sviaty = new StringBuilder("УСЬПЕНЬНЕ НАЙСЬВЯЦЕЙШАЙ БАГАРОДЗІЦЫ");
-                    if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
+                    if (Nedel == Calendar.SUNDAY && !sviatyaChtenia.isEmpty()) {
                         cytanneDop = "На ютрані: Лк 1.39-49, 56;\nФлп 2.5-11; Лк 10.38-42, 11.27-28";
                     } else {
                         sviatyaChtenia = "На ютрані: Лк 1.39-49, 56;\nФлп 2.5-11; Лк 10.38-42, 11.27-28";
@@ -1139,8 +1155,9 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
+                    postBild = "0";
                     sviaty = new StringBuilder("НАРАДЖЭНЬНЕ НАЙСЬВЯЦЕЙШАЙ БАГАРОДЗІЦЫ");
-                    if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
+                    if (Nedel == Calendar.SUNDAY && !sviatyaChtenia.isEmpty()) {
                         cytanneDop = "На ютрані: Лк 1.39-49, 56;\nФлп 2.5-11; Лк 10.38-42, 11.27-28";
                     } else {
                         sviatyaChtenia = "На ютрані: Лк 1.39-49, 56;\nФлп 2.5-11; Лк 10.38-42, 11.27-28";
@@ -1160,8 +1177,9 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
+                    postBild = "0";
                     sviaty = new StringBuilder("УВАХОД У ХРАМ НАЙСЬВЯЦЕЙШАЙ БАГАРОДЗІЦЫ");
-                    if (Nedel == 1 && !sviatyaChtenia.isEmpty()) {
+                    if (Nedel == Calendar.SUNDAY && !sviatyaChtenia.isEmpty()) {
                         cytanneDop = "На ютрані: Лк 1.39-49, 56;\nГаб 9.1-7; Лк 10.38-42, 11.27-28";
                     } else {
                         sviatyaChtenia = "На ютрані: Лк 1.39-49, 56;\nГаб 9.1-7; Лк 10.38-42, 11.27-28";
@@ -1173,6 +1191,7 @@ public class GrateCaliandarMain extends JFrame {
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
+                    postBild = "0";
                     sviaty = new StringBuilder("НАРАДЖЭНЬНЕ ГОСПАДА НАШАГА ІСУСА ХРЫСТА (РАСТВО)");
                     sviatyaChtenia = "На ютрані: Мц 1.18-25;\nГал 4.4-7; Мц 2.1-12";
                     sviatyDay = "1";
@@ -1194,7 +1213,7 @@ public class GrateCaliandarMain extends JFrame {
                 pasha.add(Calendar.DATE, -1);
                 int vialikaiaSubota = pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (!Strogipost) {
-                    if ((Nedel == 6 && post) || vialikaiaSubota == DayYear) {
+                    if ((Nedel == Calendar.FRIDAY && post) || vialikaiaSubota == DayYear) {
                         postBild = "2";
                     }
                 }
