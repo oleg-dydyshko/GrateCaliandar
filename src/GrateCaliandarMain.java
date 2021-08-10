@@ -58,7 +58,7 @@ public class GrateCaliandarMain extends JFrame {
         checkBox2.setSelected(true);
         checkBox3 = new JCheckBox();
         checkBox3.setText("Рэзервовае капіраваньне файлаў сайта");
-        checkBox3.setSelected(false);
+        checkBox3.setSelected(true);
         button = new JButton("Стварыць Каляндар");
         panel2.add(button);
         panel2.add(checkBox2);
