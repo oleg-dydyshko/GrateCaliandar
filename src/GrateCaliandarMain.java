@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-@SuppressWarnings("MagicConstant")
 public class GrateCaliandarMain extends JFrame {
 
     private int get_caliandar_year_min = 2016;
@@ -279,7 +278,7 @@ public class GrateCaliandarMain extends JFrame {
                 if (c.isLeapYear(i)) dayyear = 366 + dayyear;
                 else dayyear = 365 + dayyear;
             }
-            GregorianCalendar c2 = new GregorianCalendar(get_caliandar_year_min, 0, 1);
+            GregorianCalendar c2 = new GregorianCalendar(get_caliandar_year_min, Calendar.JANUARY, 1);
             //int Year = c2.get(Calendar.YEAR);
 
             ArrayList<String> arrayList = new ArrayList<>();
@@ -314,14 +313,14 @@ public class GrateCaliandarMain extends JFrame {
                 int data_p;
                 if (d + ex <= 9) {
                     data_p = d + ex + 22;
-                    month_p = 3;
+                    month_p = Calendar.MARCH;
                 } else {
                     data_p = d + ex - 9;
                     if (d == 29 && ex == 6) data_p = 19;
                     if (d == 28 && ex == 6) data_p = 18;
-                    month_p = 4;
+                    month_p = Calendar.APRIL;
                 }
-                GregorianCalendar pasha = new GregorianCalendar(year, month_p - 1, data_p);
+                GregorianCalendar pasha = new GregorianCalendar(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -70);//Мытніка і фарысея
                 int mytnik = pasha.get(Calendar.DAY_OF_YEAR);
                 pasha.add(Calendar.DATE, 14);//Мясопустная
@@ -330,37 +329,37 @@ public class GrateCaliandarMain extends JFrame {
                 int svetly = pasha.get(Calendar.DAY_OF_YEAR);
                 pasha.add(Calendar.DATE, 49);//Траецкі
                 int traechki = pasha.get(Calendar.DAY_OF_YEAR);
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 int Pasxa = pasha.get(Calendar.DAY_OF_YEAR);
                 pasha.add(Calendar.DATE, -49);
                 int VialikiPost = pasha.get(Calendar.DAY_OF_YEAR);
-                pasha.set(year, 5, 29);
+                pasha.set(year, Calendar.JUNE, 29);
                 int Pavel = pasha.get(Calendar.DAY_OF_YEAR);
-                pasha.set(year, 7, 1);
+                pasha.set(year, Calendar.AUGUST, 1);
                 int uspenieN = pasha.get(Calendar.DAY_OF_YEAR);
-                pasha.set(year, 7, 15);
+                pasha.set(year, Calendar.AUGUST, 15);
                 int uspenieK = pasha.get(Calendar.DAY_OF_YEAR);
-                pasha.set(year, 10, 15);
+                pasha.set(year, Calendar.NOVEMBER, 15);
                 int kaladyN = pasha.get(Calendar.DAY_OF_YEAR);
-                pasha.set(year, 11, 25);
+                pasha.set(year, Calendar.DECEMBER, 25);
                 int kaladyK = pasha.get(Calendar.DAY_OF_YEAR);
-                pasha.set(year, 0, 5);
+                pasha.set(year, Calendar.JANUARY, 5);
                 int bogaziaulenne = pasha.get(Calendar.DAY_OF_YEAR);
                 int bogaziaulenneNed = pasha.get(Calendar.DAY_OF_WEEK);
-                pasha.set(year, 7, 29);
+                pasha.set(year, Calendar.AUGUST, 29);
                 int AdsiachenneGalavy = pasha.get(Calendar.DAY_OF_YEAR);
                 int AdsiachenneGalavyNed = pasha.get(Calendar.DAY_OF_WEEK);
-                pasha.set(year, 8, 14);
+                pasha.set(year, Calendar.SEPTEMBER, 14);
                 int KrygaUzvyshenne = pasha.get(Calendar.DAY_OF_YEAR);
                 int KrygaUzvyshenneNed = pasha.get(Calendar.DAY_OF_WEEK);
-                pasha.set(year, 11, 24);
+                pasha.set(year, Calendar.DECEMBER, 24);
                 int Kaliady = pasha.get(Calendar.DAY_OF_YEAR);
                 int KaliadyNed = pasha.get(Calendar.DAY_OF_WEEK);
 
-                GregorianCalendar sustrecha = new GregorianCalendar(year, 1, 2);
+                GregorianCalendar sustrecha = new GregorianCalendar(year, Calendar.FEBRUARY, 2);
                 int i2 = sustrecha.get(Calendar.DAY_OF_YEAR);
                 int addanne_sviata_Sustrechy = i2 + 6;
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -64);//Блудны сын(суббота)
                 int period1 = pasha.get(Calendar.DAY_OF_YEAR);
                 if (i2 >= period1 && i2 <= period1 + 2) {
@@ -411,18 +410,18 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
 
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -48);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Пачатак Вялікага посту</em>";
                 }
 
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, 57);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Пачатак Пятровага посту</em>";
                 }
-                pasha.set(year, 7, 1);
+                pasha.set(year, Calendar.AUGUST, 1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     // Працэсія Пачэснага Крыжа
                     cytanneDop = "Крыжу: 1 Кар 1.18-24; Ян 19.6-11, 13-20, 25-28, 30-35";
@@ -434,7 +433,7 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Пачатак Усьпенскага посту</em>";
                 }
-                pasha.set(year, 10, 15);
+                pasha.set(year, Calendar.NOVEMBER, 15);
                 if (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
                     pasha.add(Calendar.DATE, 1);
                 if (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY)
@@ -442,7 +441,7 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Пачатак Каляднага посту</em>";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -6);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Вялікі панядзелак</em>";
@@ -472,7 +471,7 @@ public class GrateCaliandarMain extends JFrame {
                 int[] rogdestvo = {11, 12, 13, 14, 15, 16, 17};
                 int[] rogdestvo2 = {18, 19, 20, 21, 22, 23, 24};
                 for (int aMay1 : rogdestvo) {
-                    rog.set(year, 11, aMay1);
+                    rog.set(year, Calendar.DECEMBER, aMay1);
                     int wik = rog.get(Calendar.DAY_OF_WEEK);
                     if (wik == 1) {
                         if (rog.get(Calendar.DAY_OF_YEAR) - 1 == DayYear) {
@@ -481,7 +480,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int aMay1 : rogdestvo2) {
-                    rog.set(year, 11, aMay1);
+                    rog.set(year, Calendar.DECEMBER, aMay1);
                     int wik = rog.get(Calendar.DAY_OF_WEEK);
                     if (wik == 1) {
                         if (rog.get(Calendar.DAY_OF_YEAR) - 1 == DayYear) {
@@ -491,7 +490,7 @@ public class GrateCaliandarMain extends JFrame {
                 }
                 if (caliandar_year.getSviaty(year, DayYear, 1) != null) {
                     if (year == get_caliandar_year_max) {
-                        GregorianCalendar gc = new GregorianCalendar(year, month_p - 1, data_p);
+                        GregorianCalendar gc = new GregorianCalendar(year, month_p, data_p);
                         gc.add(Calendar.DATE, -71);
                         if (DayYear < gc.get(Calendar.DAY_OF_YEAR) || DayYear > 257) {
                             sviatyaChtenia = "Прабачце, няма дадзеных";
@@ -507,15 +506,15 @@ public class GrateCaliandarMain extends JFrame {
                 if (caliandar_year.getSviaty(year, DayYear, 2) != null && caliandar_year.getSviaty(year, DayYear, 2).equals("1"))
                     sviatyDay = "1";
 
-                pasha.set(year, 0, 2);
+                pasha.set(year, Calendar.JANUARY, 2);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Богазьяўленьня</em>";
                 }
-                pasha.set(year, 0, 14);
+                pasha.set(year, Calendar.JANUARY, 14);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Адданьне сьвята Богазьяўленьня</em>";
                 }
-                pasha.set(year, 1, 1);
+                pasha.set(year, Calendar.FEBRUARY, 1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Cустрэчы Госпада нашага Ісуса Хрыста</em>";
                 }
@@ -523,71 +522,71 @@ public class GrateCaliandarMain extends JFrame {
                     predsviaty = "<em>Адданьне сьвята Сустрэчы Госпада</em>";
                     sv_per_ch = "Багар.: Габ 9.1-7; Лк 10.38-42, 11.27-28";
                 }
-                pasha.set(year, 2, 24);
+                pasha.set(year, Calendar.MARCH, 24);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Дабравешчаньня</em>";
                 }
-                pasha.set(year, 2, 26);
+                pasha.set(year, Calendar.MARCH, 26);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Адданьне сьвята Дабравешчаньня</em>";
                 }
-                pasha.set(year, 6, 31);
+                pasha.set(year, Calendar.JULY, 31);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце працэсіі Пачэснага Крыжа</em>";
                 }
-                pasha.set(year, 7, 5);
+                pasha.set(year, Calendar.AUGUST, 5);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Перамяненьня</em>";
                 }
-                pasha.set(year, 7, 13);
+                pasha.set(year, Calendar.AUGUST, 13);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Адданьне сьвята Перамяненьня</em>";
                 }
-                pasha.set(year, 7, 14);
+                pasha.set(year, Calendar.AUGUST, 14);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Ўсьпеньня</em>";
                 }
-                pasha.set(year, 7, 23);
+                pasha.set(year, Calendar.AUGUST, 23);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Адданьне сьвята Ўсьпеньня</em>";
                 }
-                pasha.set(year, 8, 7);
+                pasha.set(year, Calendar.SEPTEMBER, 7);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Нараджэньня Найсьв. Багародзіцы</em>";
                 }
-                pasha.set(year, 8, 12);
+                pasha.set(year, Calendar.SEPTEMBER, 12);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Адданьне сьвята Нараджэньня Найсьвяцейшай Багародзіцы</em>";
                 }
-                pasha.set(year, 8, 13);
+                pasha.set(year, Calendar.SEPTEMBER, 13);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Крыжаўзвышэньня</em>";
                 }
-                pasha.set(year, 8, 21);
+                pasha.set(year, Calendar.SEPTEMBER, 21);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Адданьне сьвята Крыжаўзвышэньня</em>";
                 }
-                pasha.set(year, 10, 20);
+                pasha.set(year, Calendar.NOVEMBER, 20);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Ўваходу ў Храм Найсьвяцейшай Багародзіцы</em>";
                 }
-                pasha.set(year, 11, 8);
+                pasha.set(year, Calendar.DECEMBER, 8);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Зачацьця праведнай Ганны</em>";
                 }
-                pasha.set(year, 10, 25);
+                pasha.set(year, Calendar.NOVEMBER, 25);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Адданьне сьвята Ўваходу ў Храм Багародзіцы</em>";
                 }
-                pasha.set(year, 11, 20);
+                pasha.set(year, Calendar.DECEMBER, 20);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Перадсьвяцьце Раства Хрыстова</em>";
                 }
-                pasha.set(year, 11, 31);
+                pasha.set(year, Calendar.DECEMBER, 31);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Адданьне сьвята Раства Хрыстовага</em>";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, 37);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Адданьне сьвята Вялікадня</em>";
@@ -600,13 +599,13 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Адданьне сьвята Тройцы</em>";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, 23);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<strong>Палова сьвята Пяцідзесятніцы</strong>";
                 }
                 for (int i = 7; i <= 13; i++) {
-                    pasha.set(year, 8, i);
+                    pasha.set(year, Calendar.SEPTEMBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == dayofweek) {
                         if (i == 12)
@@ -617,7 +616,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int i = 15; i <= 21; i++) {
-                    pasha.set(year, 8, i);
+                    pasha.set(year, Calendar.SEPTEMBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == dayofweek) {
                         predsviaty = "<strong>Субота пасьля Крыжаўзвышэньня</strong>";
@@ -625,7 +624,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int i = 7; i <= 13; i++) {
-                    pasha.set(year, 8, i);
+                    pasha.set(year, Calendar.SEPTEMBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SUNDAY == dayofweek) {
                         predsviaty = "<strong>Нядзеля перад Крыжаўзвышэньнем</strong>";
@@ -633,7 +632,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int i = 15; i <= 21; i++) {
-                    pasha.set(year, 8, i);
+                    pasha.set(year, Calendar.SEPTEMBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SUNDAY == dayofweek) {
                         predsviaty = "<strong>Нядзеля пасьля Крыжаўзвышэньня</strong>";
@@ -641,7 +640,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int i = 7; i <= 13; i++) {
-                    pasha.set(year, 0, i);
+                    pasha.set(year, Calendar.JANUARY, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SUNDAY == dayofweek) {
                         //predsviaty = "<strong>Нядзеля пасьля Богазьяўленьня</strong>";
@@ -650,7 +649,7 @@ public class GrateCaliandarMain extends JFrame {
                 }
 
                 for (int i = 18; i <= 24; i++) {
-                    pasha.set(year, 11, i);
+                    pasha.set(year, Calendar.DECEMBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == dayofweek) {
                         predsviaty = "<strong>Субота перад Раством Хрыстовым</strong>";
@@ -658,20 +657,20 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int i = 26; i <= 31; i++) {
-                    pasha.set(year, 11, i);
+                    pasha.set(year, Calendar.DECEMBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if ((DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == dayofweek)) {
                         predsviaty = "<strong>Субота пасьля Раства Хрыстовага</strong>";
                         sv_per_ch = "Суб.: 1 Цім 6.11-16; Мц 12.15-21";
                     }
                 }
-                pasha.set(year, 0, 1);
+                pasha.set(year, Calendar.JANUARY, 1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == pasha.get(Calendar.DAY_OF_WEEK)) {
                     predsviaty = "<strong>Субота пасьля Раства Хрыстовага</strong>";
                     sv_per_ch = "Суб.: 1 Цім 6.11-16; Мц 12.15-21";
                 }
                 for (int i = 19; i <= 25; i++) {
-                    pasha.set(year, 9, i);
+                    pasha.set(year, Calendar.OCTOBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == dayofweek) {
                         predsviaty = "<strong>Змітраўская бацькоўская субота</strong>";
@@ -680,7 +679,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int i = 1; i <= 5; i++) {
-                    pasha.set(year, 0, i);
+                    pasha.set(year, Calendar.JANUARY, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == dayofweek) {
                         predsviaty = "<strong>Субота перад Богазьяўленьнем</strong>";
@@ -688,7 +687,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int i = 30; i <= 31; i++) {
-                    pasha.set(year, 11, i);
+                    pasha.set(year, Calendar.DECEMBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == dayofweek) {
                         if (i == 30 && Calendar.SATURDAY == dayofweek) {
@@ -701,40 +700,40 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int i = 7; i <= 13; i++) {
-                    pasha.set(year, 0, i);
+                    pasha.set(year, Calendar.JANUARY, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == dayofweek) {
                         predsviaty = "<strong>Субота пасьля Богазьяўленьня</strong>";
                         sv_per_ch = "Суб.: Эф 6.10-17; Мц 4.1-11";
                     }
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -51);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Усіх сьвятых айцоў\nманахаў і посьнікаў</em>";
                     sv_per_ch = "Айцам.: Гал 5.22-6.2; Мц 11.27-30";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, 8);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<strong>Радаўніца</strong>";
                     sv_per_ch = "Пам.: 1 Кар 15.47-57; Ян 5.24-30";
                     pameplyia = "1";
                 }
-                pasha.set(year, 11, 24);
+                pasha.set(year, Calendar.DECEMBER, 24);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "СЬВЯТЫ ВЕЧАР ПЕРАД РАСТВОМ ХРЫСТОВЫМ";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -44);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
-                    GregorianCalendar vtt = new GregorianCalendar(year, 1, 17);
+                    GregorianCalendar vtt = new GregorianCalendar(year, Calendar.FEBRUARY, 17);
                     if (vtt.get(Calendar.DAY_OF_YEAR) - 1 != pasha.get(Calendar.DAY_OF_YEAR)) {
                         sv_per = new StringBuilder("Вялікамуч. Тодара Тырона");
                         sv_per_ch = "Вялікамуч.: 2 Цім 2.1-10; Ян 15.17-16.2";
                     }
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -22);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     String br = "";
@@ -743,7 +742,7 @@ public class GrateCaliandarMain extends JFrame {
                     sv_per.append(br).append("Вялебнага Яна Лесьвічніка");
                     sv_per_ch = "Вялеб.: Эф 5.9-19; Мц 4.25-5.12";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -15);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     String br = "";
@@ -752,7 +751,7 @@ public class GrateCaliandarMain extends JFrame {
                     sv_per.append(br).append("Вялебнай Марыі Ягіпецкай");
                     sv_per_ch = "Вялеб.: Гал 3.23-29; Лк 7.36-50";
                 }
-                pasha.set(year, 1, 28);
+                pasha.set(year, Calendar.FEBRUARY, 28);
                 if (pasha.isLeapYear(year))
                     pasha.add(Calendar.DATE, 1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
@@ -763,7 +762,7 @@ public class GrateCaliandarMain extends JFrame {
                 }
                 Integer[] dnuShesty = {13, 14, 15, 16, 17, 18, 19};
                 for (int dny : dnuShesty) {
-                    pasha.set(year, 6, dny);
+                    pasha.set(year, Calendar.JULY, dny);
                     int wik = pasha.get(Calendar.DAY_OF_WEEK);
                     if (wik == Calendar.SUNDAY) {
                         if (pasha.get(Calendar.DAY_OF_YEAR) - 1 == DayYear) {
@@ -775,7 +774,7 @@ public class GrateCaliandarMain extends JFrame {
                         }
                     }
                 }
-                pasha.set(year, 8, 1);
+                pasha.set(year, Calendar.SEPTEMBER, 1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     String br = "";
                     if (!sv_per.toString().equals(""))
@@ -785,49 +784,49 @@ public class GrateCaliandarMain extends JFrame {
                 }
 
                 // Памінаньне памёрлых
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -58);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Мясапусная задушная субота</em>";
                     pameplyia = "1";
                     sv_per_ch = "Пам.: 1 Сал 4.13-17; Ян 5.24-30";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -37);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Бацькоўская (задушная) субота</em>";
                     pameplyia = "1";
                     sv_per_ch = "Пам.: 1 Сал 4.13-17; Ян 5.24-30";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -30);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Бацькоўская (задушная) субота</em>";
                     pameplyia = "1";
                     sv_per_ch = "Пам.: 1 Сал 4.13-17; Ян 5.24-30";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -23);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Бацькоўская (задушная) субота</em>";
                     pameplyia = "1";
                     sv_per_ch = "Пам.: 1 Кар 15.47-57; Ян 5.24-30";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, 47);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Траецкая бацькоўская субота</em>";
                     sv_per_ch = "Пам.: 1 Сал 4.13-17; Ян 5.24-30";
                     pameplyia = "1";
                 }
-                pasha.set(year, 10, 2);
+                pasha.set(year, Calendar.NOVEMBER, 2);
                 pasha.add(Calendar.DATE, -1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<strong>Дзяды</strong>";
                     sv_per_ch = "Пам.: 1 Кар 15.47-57; Ян 6.48-54";
                     pameplyia = "1";
                 }
-                pasha.set(year, 11, 24);
+                pasha.set(year, Calendar.DECEMBER, 24);
                 if (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
                     pasha.add(Calendar.DATE, -2);
                 if (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY)
@@ -836,7 +835,7 @@ public class GrateCaliandarMain extends JFrame {
                     //vailikia_gadziny = "Вялікія гадзіны";
                     sv_per_ch = "Вялікія гадзіны: Габ 1.1-12; Мц 1.18-25;\nГаб 1.10-2.3; Мц 2.1-12; Габ 2.11-18; Мц 2.13-23";
                 }
-                pasha.set(year, 0, 5);
+                pasha.set(year, Calendar.JANUARY, 5);
                 if (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
                     pasha.add(Calendar.DATE, -2);
                 if (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY)
@@ -845,37 +844,37 @@ public class GrateCaliandarMain extends JFrame {
                     //vailikia_gadziny = "Вялікія гадзіны";
                     sv_per_ch = "Вялікія гадзіны: Габ 1.1-12; Мц 1.18-25;\nГаб 1.10-2.3; Мц 2.1-12; Габ 2.11-18; Мц 2.13-23";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -2);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Вялікая пятніца.<br>Успамін мукаў і сьмерці Хрыстовай</em>";
                     //vailikia_gadziny = "Вялікія гадзіны";
                     sv_per_ch = "Вялікія гадзіны: Габ 1.1-12; Мц 1.18-25;\nГаб 1.10-2.3; Мц 2.1-12; Габ 2.11-18; Мц 2.13-23";
                 }
-                pasha.set(year, 11, 24);
+                pasha.set(year, Calendar.DECEMBER, 24);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)) {
                     cytanneDop = "На вячэрні: Гал 3.15-22; Мц 13.31-36";
                 } else if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     cytanneDop = "На вячэрні: Быц 1.1-13; Лікі 24.2-3, 5-9, 17-18; Міх 4.6-7, 5.1-4; Іс 11.1-10;\nЯрэм 3.35-4.4; Дан 2.31-36, 44-45; Іс 9.5-6, 7.10-16, 8.1-4, 9-10";
                 }
-                pasha.set(year, 0, 5);
+                pasha.set(year, Calendar.JANUARY, 5);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)) {
                     cytanneDop = "На вячэрні: 1 Кар 10.1-4; Лк 3.1-18";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -16);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Субота акафісту</em>";
                     sv_per_ch = "Багародзіцы: Габ 9.1-7; Лк 10.38-42, 11.27-28";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -9);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<em>Лазарава субота</em>";
                     sv_per_ch = "На вячэрні: Быц 49.1-2, 8-12; Саф 3.14-19; Зах 9.9-15";
                 }
                 String sviachanni = "";
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     sviachanni = "Блаславеньне велікодных страваў";
                 }
@@ -883,24 +882,24 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     sviachanni = "Блаславеньне вербаў";
                 }
-                pasha.set(year, 0, 6);
+                pasha.set(year, Calendar.JANUARY, 6);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     sviachanni = "Вялікае асьвячэньне вады";
                 }
-                pasha.set(year, 1, 2);
+                pasha.set(year, Calendar.FEBRUARY, 2);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     sviachanni = "Блаславеньне сьвечак";
                 }
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, 49);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     sviachanni = "Пасьля Літургіі Вячэрня з укленчаньнем";
                 }
-                pasha.set(year, 7, 6);
+                pasha.set(year, Calendar.AUGUST, 6);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     sviachanni = "Блаславеньне садавіны";
                 }
-                pasha.set(year, 7, 15);
+                pasha.set(year, Calendar.AUGUST, 15);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     sviachanni = "Блаславеньне духмяных зёлак";
                 }
@@ -972,7 +971,7 @@ public class GrateCaliandarMain extends JFrame {
                     tipicon = "2";
                 }
 
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 int pasxa = pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 pasha.add(Calendar.DATE, -7);
                 int uvachod = pasha.get(Calendar.DAY_OF_YEAR) - 1;
@@ -1011,7 +1010,7 @@ public class GrateCaliandarMain extends JFrame {
                     postBild = "0";
                 }
                 // когда выпадают ВЯЛІКІЯ СЬВЯТЫ относительно Пасхі
-                GregorianCalendar calendar_pasha = new GregorianCalendar(year, 0, 1);
+                GregorianCalendar calendar_pasha = new GregorianCalendar(year, Calendar.JANUARY, 1);
                 int i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("АБРЭЗАНЬНЕ ГАСПОДНЯЕ");
@@ -1025,7 +1024,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "2";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 5, 24);
+                calendar_pasha.set(year, Calendar.JUNE, 24);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("НАРАДЖЭНЬНЕ СЬВ. ЯНА ПРАДВЕСЬНІКА І ХРЫСЬЦІЦЕЛЯ ГАСПОДНЯГА");
@@ -1039,7 +1038,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "2";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 5, 29);
+                calendar_pasha.set(year, Calendar.JUNE, 29);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("СЬВЯТЫХ СЛАЎНЫХ І ЎСЯХВАЛЬНЫХ ВЯРХОЎНЫХ АПОСТАЛАЎ ПЯТРА І ПАЎЛА");
@@ -1053,7 +1052,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "2";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 7, 29);
+                calendar_pasha.set(year, Calendar.AUGUST, 29);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("АДСЯЧЭНЬНЕ ГАЛАВЫ СЬВ. ЯНА ПРАДВЕСЬНІКА І ХРЫСЬЦІЦЕЛЯ");
@@ -1067,7 +1066,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "2";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 9, 1);
+                calendar_pasha.set(year, Calendar.OCTOBER, 1);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("ПОКРЫВА НАЙСЬВЯЦЕЙШАЙ БАГАРОДЗІЦЫ");
@@ -1082,7 +1081,7 @@ public class GrateCaliandarMain extends JFrame {
                     tipicon = "2";
                 }
                 // когда выпадают ДВУНАДЗЯСЯТЫЯ СЬВЯТЫ относительно Пасхі, кроме зависящих от неё
-                calendar_pasha.set(year, 0, 6);
+                calendar_pasha.set(year, Calendar.JANUARY, 6);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("БОГАЗЬЯЎЛЕНЬНЕ (Вадохрышча)");
@@ -1093,7 +1092,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "1";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 1, 2);
+                calendar_pasha.set(year, Calendar.FEBRUARY, 2);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
@@ -1108,7 +1107,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "1";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 2, 25);
+                calendar_pasha.set(year, Calendar.MARCH, 25);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     String linurgia = "Літургія сьв. Яна Залатавуснага";
@@ -1127,7 +1126,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "1";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 7, 6);
+                calendar_pasha.set(year, Calendar.AUGUST, 6);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
@@ -1137,7 +1136,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "1";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 7, 15);
+                calendar_pasha.set(year, Calendar.AUGUST, 15);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
@@ -1151,7 +1150,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "1";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 8, 8);
+                calendar_pasha.set(year, Calendar.SEPTEMBER, 8);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
@@ -1165,7 +1164,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "1";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 8, 14);
+                calendar_pasha.set(year, Calendar.SEPTEMBER, 14);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     sviaty = new StringBuilder("УЗВЫШЭНЬНЕ ПАЧЭСНАГА І ЖЫЦЬЦЯДАЙНАГА КРЫЖА");
@@ -1173,7 +1172,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "1";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 10, 21);
+                calendar_pasha.set(year, Calendar.NOVEMBER, 21);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
@@ -1187,7 +1186,7 @@ public class GrateCaliandarMain extends JFrame {
                     sviatyDay = "1";
                     tipicon = "2";
                 }
-                calendar_pasha.set(year, 11, 25);
+                calendar_pasha.set(year, Calendar.DECEMBER, 25);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     post = false;
@@ -1198,7 +1197,7 @@ public class GrateCaliandarMain extends JFrame {
                     tipicon = "2";
                 }
                 // когда выпадают ПРЕДПРАЗДНИЧНЫЕ ДНИ относительно Пасхі
-                calendar_pasha.set(year, 0, 5);
+                calendar_pasha.set(year, Calendar.JANUARY, 5);
                 i3 = calendar_pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (DayYear == i3) {
                     if (calendar_pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
@@ -1209,7 +1208,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
 
-                pasha.set(year, month_p - 1, data_p);
+                pasha.set(year, month_p, data_p);
                 pasha.add(Calendar.DATE, -1);
                 int vialikaiaSubota = pasha.get(Calendar.DAY_OF_YEAR) - 1;
                 if (!Strogipost) {
@@ -1218,7 +1217,7 @@ public class GrateCaliandarMain extends JFrame {
                     }
                 }
                 for (int i = 11; i <= 17; i++) {
-                    pasha.set(year, 9, i);
+                    pasha.set(year, Calendar.OCTOBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SUNDAY == dayofweek) {
                         predsviaty = "<strong>Айцоў VII Сусветнага Сабору</strong>";
@@ -1289,7 +1288,7 @@ public class GrateCaliandarMain extends JFrame {
                 arrayList.add(pameplyia); // Умершие 18
                 arrayList.add(sviatyPKC(DayYear, year)); // Римо-каталические праздники 19
 
-                GregorianCalendar gc = new GregorianCalendar(year, month_p - 1, data_p);
+                GregorianCalendar gc = new GregorianCalendar(year, month_p, data_p);
                 if (year == get_caliandar_year_max) {
                     if (DayYear < gc.get(Calendar.DAY_OF_YEAR) || DayYear > 257) {
                         arrayList.add("0"); // Тон в Воскресенье 20
@@ -1343,15 +1342,15 @@ public class GrateCaliandarMain extends JFrame {
         int ex = (2 * b + 4 * cx + 6 * d + n) % 7;
         if (d + ex <= 9) {
             dataP = d + ex + 22;
-            monthP = 3;
+            monthP = Calendar.MARCH;
         } else {
             dataP = d + ex - 9;
             if (d == 29 && ex == 6) dataP = 19;
             if (d == 28 && ex == 6) dataP = 18;
-            monthP = 4;
+            monthP = Calendar.APRIL;
         }
         String[] monthName = {"студзеня", "лютага", "сакавіка", "красавіка", "траўня", "чэрвеня", "ліпеня", "жніўня", "верасьня", "кастрычніка", "лістапада", "сьнежня"};
-        GregorianCalendar calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        GregorianCalendar calendar = new GregorianCalendar(year, monthP, dataP);
         int pashaD = calendar.get(Calendar.DAY_OF_MONTH);
         int pashaM = calendar.get(Calendar.MONTH);
         calendar.add(Calendar.DATE, -7);
@@ -1363,33 +1362,33 @@ public class GrateCaliandarMain extends JFrame {
         calendar.add(Calendar.DATE, +10);
         int troicaD = calendar.get(Calendar.DAY_OF_MONTH);
         int troicaM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar = new GregorianCalendar(year, monthP, dataP);
         calendar.add(Calendar.DATE, -70);
         int postMytnikND = calendar.get(Calendar.DAY_OF_MONTH);
         int postMytnikNM = calendar.get(Calendar.MONTH);
         calendar.add(Calendar.DATE, 7);
         int postMytnikKD = calendar.get(Calendar.DAY_OF_MONTH);
         int postMytnikKM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar = new GregorianCalendar(year, monthP, dataP);
         calendar.add(Calendar.DATE, 7);
         int nopostSvetluKD = calendar.get(Calendar.DAY_OF_MONTH);
         int nopostSvetluKM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar = new GregorianCalendar(year, monthP, dataP);
         calendar.add(Calendar.DATE, 49);
         int nopostTroicaND = calendar.get(Calendar.DAY_OF_MONTH);
         int nopostTroicaNM = calendar.get(Calendar.MONTH);
         calendar.add(Calendar.DATE, 7);
         int nopostTroicaKD = calendar.get(Calendar.DAY_OF_MONTH);
         int nopostTroicaKM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar = new GregorianCalendar(year, monthP, dataP);
         calendar.add(Calendar.DATE, 57);
         int postPetrKD = calendar.get(Calendar.DAY_OF_MONTH);
         int postPetrKM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar = new GregorianCalendar(year, monthP, dataP);
         calendar.add(Calendar.DATE, -48);
         int postVialikiND = calendar.get(Calendar.DAY_OF_MONTH);
         int postVialikiNM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP - 1, dataP);
+        calendar = new GregorianCalendar(year, monthP, dataP);
         calendar.add(Calendar.DATE, -1);
         int postVialikiKD = calendar.get(Calendar.DAY_OF_MONTH);
         int postVialikiKM = calendar.get(Calendar.MONTH);
@@ -1465,92 +1464,92 @@ public class GrateCaliandarMain extends JFrame {
         int data_p;
         if (d + ex <= 9) {
             data_p = d + ex + 22;
-            month_p = 3;
+            month_p = Calendar.MARCH;
         } else {
             data_p = d + ex - 9;
             if (d == 29 && ex == 6) data_p = 19;
             if (d == 28 && ex == 6) data_p = 18;
-            month_p = 4;
+            month_p = Calendar.APRIL;
         }
-        GregorianCalendar pkc = new GregorianCalendar(year, 0, 1);
+        GregorianCalendar pkc = new GregorianCalendar(year, Calendar.JANUARY, 1);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Сьвятой Багародзіцы Марыі\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 0, 6);
+        pkc.set(year, Calendar.JANUARY, 6);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Аб’яўленьне Пана (Тры Каралі)\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 0, 7);
+        pkc.set(year, Calendar.JANUARY, 7);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Хрост Пана\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 1, 2);
+        pkc.set(year, Calendar.FEBRUARY, 2);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Ахвяраваньне Пана\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 2, 19);
+        pkc.set(year, Calendar.MARCH, 19);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Сьвятога Юзафа\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 5, 24);
+        pkc.set(year, Calendar.JUNE, 24);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Нараджэньне сьв. Яна Хрысьціцеля\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 5, 29);
+        pkc.set(year, Calendar.JUNE, 29);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Сьвятых апосталаў Пятра і Паўла\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 6, 2);
+        pkc.set(year, Calendar.JULY, 2);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Найсьвяцейшай Панны Марыі Будслаўскай\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 7, 6);
+        pkc.set(year, Calendar.AUGUST, 6);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Перамяненьне Пана\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 7, 15);
+        pkc.set(year, Calendar.AUGUST, 15);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Унебаўзяцьце Найсьвяцейшай Панны Марыі\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 8, 8);
+        pkc.set(year, Calendar.SEPTEMBER, 8);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Нараджэньне Найсьвяцейшай Панны Марыі\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 8, 14);
+        pkc.set(year, Calendar.SEPTEMBER, 14);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Узвышэньня Сьвятога Крыжа\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 8, 29);
+        pkc.set(year, Calendar.SEPTEMBER, 29);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Сьвятых Арханёлаў\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 10, 1);
+        pkc.set(year, Calendar.NOVEMBER, 1);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Усіх Сьвятых\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 10, 2);
+        pkc.set(year, Calendar.NOVEMBER, 2);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Успамін усіх памерлых вернікаў\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 11, 8);
+        pkc.set(year, Calendar.DECEMBER, 8);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Беззаганнага Зачацьця Найсьвяцейшай Панны Марыі\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 11, 25);
+        pkc.set(year, Calendar.DECEMBER, 25);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Нараджэньне Пана\n(паводле календара РКЦ)";
         }
-        pkc.set(year, month_p - 1, data_p);
+        pkc.set(year, month_p, data_p);
         pkc.add(Calendar.DATE, -46);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Папялец (пачатак Вялікага посту)\n(паводле календара РКЦ)";
         }
-        pkc.set(year, month_p - 1, data_p);
+        pkc.set(year, month_p, data_p);
         pkc.add(Calendar.DATE, -7);
         int nachPalNed = pkc.get(Calendar.DAY_OF_YEAR);
         pkc.add(Calendar.DATE, 14);
         int konPalNed = pkc.get(Calendar.DAY_OF_YEAR);
-        pkc.set(year, 2, 25);
+        pkc.set(year, Calendar.MARCH, 25);
         boolean perenos = false;
         for (int i = nachPalNed; i < konPalNed; i++) {
             if (i == pkc.get(Calendar.DAY_OF_YEAR)) {
@@ -1569,24 +1568,24 @@ public class GrateCaliandarMain extends JFrame {
         if (nachPalNed == DayYear) {
             sabytiePKC = "Пальмовая нядзеля\n(паводле календара РКЦ)";
         }
-        pkc.set(year, month_p - 1, data_p);
+        pkc.set(year, month_p, data_p);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Уваскрасеньне Пана (Вялікдзень)\n(паводле календара РКЦ)";
         }
         if (konPalNed == DayYear) {
             sabytiePKC = "Божай Міласэрнасьці\n(паводле календара РКЦ)";
         }
-        pkc.set(year, month_p - 1, data_p);
+        pkc.set(year, month_p, data_p);
         pkc.add(Calendar.DATE, 39);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Унебаўшэсьце Пана\n(паводле календара РКЦ)";
         }
-        pkc.set(year, month_p - 1, data_p);
+        pkc.set(year, month_p, data_p);
         pkc.add(Calendar.DATE, 49);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Спасланьне Духа Сьвятога\n(паводле календара РКЦ)";
         }
-        pkc.set(year, month_p - 1, data_p);
+        pkc.set(year, month_p, data_p);
         pkc.add(Calendar.DATE, 60);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Найсьвяцейшага Цела і Крыві Хрыста (Божага Цела)\n(паводле календара РКЦ)";
@@ -1595,12 +1594,12 @@ public class GrateCaliandarMain extends JFrame {
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Найсьвяцейшага Сэрца Езуса\n(паводле календара РКЦ)";
         }
-        pkc.set(year, month_p - 1, data_p);
+        pkc.set(year, month_p, data_p);
         pkc.add(Calendar.DATE, 56);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Найсьвяцейшай Тройцы\n(паводле календара РКЦ)";
         }
-        pkc.set(year, 11, 25);
+        pkc.set(year, Calendar.DECEMBER, 25);
         int count = 0;
         for (int i = 50; i > 0; i--) {
             if (count == 4) {
@@ -1612,7 +1611,7 @@ public class GrateCaliandarMain extends JFrame {
             pkc.add(Calendar.DATE, -1);
             if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) count++;
         }
-        pkc.set(year, 11, 25);
+        pkc.set(year, Calendar.DECEMBER, 25);
         int count2 = 0;
         for (int i = 50; i > 0; i--) {
             if (count2 == 5) {
@@ -1624,7 +1623,7 @@ public class GrateCaliandarMain extends JFrame {
             pkc.add(Calendar.DATE, -1);
             if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) count2++;
         }
-        pkc.set(year, 11, 25);
+        pkc.set(year, Calendar.DECEMBER, 25);
         for (int i = 0; i < 7; i++) {
             if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                 if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
@@ -1645,12 +1644,12 @@ public class GrateCaliandarMain extends JFrame {
         int b = (2 * (year % 4) + 4 * (year % 7) + 6 * a + 6) % 7;
         if (a + b > 9) {
             data_p = a + b - 9;
-            month_p = 4;
+            month_p = Calendar.APRIL;
         } else {
             data_p = 22 + a + b;
-            month_p = 3;
+            month_p = Calendar.MARCH;
         }
-        GregorianCalendar pravas = new GregorianCalendar(year, month_p - 1, data_p);
+        GregorianCalendar pravas = new GregorianCalendar(year, month_p, data_p);
         pravas.add(Calendar.DATE, 13);
         //Праваслаўныя сьвяты
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -1664,46 +1663,46 @@ public class GrateCaliandarMain extends JFrame {
         pravas.add(Calendar.DATE, 10);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Зыход Сьвятога Духа\n(паводле юльянскага календара)";
-        pravas.set(year, 0, 19);
+        pravas.set(year, Calendar.JANUARY, 19);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Богазьяўленьне\n(паводле юльянскага календара)";
-        pravas.set(year, 1, 15);
+        pravas.set(year, Calendar.FEBRUARY, 15);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Сустрэча Госпада (Грамніцы)\n(паводле юльянскага календара)";
-        pravas.set(year, 3, 7);
+        pravas.set(year, Calendar.APRIL, 7);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Дабравешчаньне\n(паводле юльянскага календара)";
-        pravas.set(year, 7, 19);
+        pravas.set(year, Calendar.AUGUST, 19);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Перамяненьне Гасподняе\n(паводле юльянскага календара)";
-        pravas.set(year, 7, 28);
+        pravas.set(year, Calendar.AUGUST, 28);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Усьпеньне Багародзіцы\n(паводле юльянскага календара)";
-        pravas.set(year, 8, 21);
+        pravas.set(year, Calendar.SEPTEMBER, 21);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Нараджэньне Багародзіцы\n(паводле юльянскага календара)";
-        pravas.set(year, 8, 27);
+        pravas.set(year, Calendar.SEPTEMBER, 27);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Крыжаўзвышэньне\n(паводле юльянскага календара)";
-        pravas.set(year, 11, 4);
+        pravas.set(year, Calendar.DECEMBER, 4);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Уваход у Храм Багародзіцы\n(паводле юльянскага календара)";
-        pravas.set(year, 0, 7);
+        pravas.set(year, Calendar.JANUARY, 7);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Нараджэньне Хрыстова\n(паводле юльянскага календара)";
-        pravas.set(year, 0, 14);
+        pravas.set(year, Calendar.JANUARY, 14);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Абрэзаньне Гасподняе\n(паводле юльянскага календара)";
-        pravas.set(year, 6, 7);
+        pravas.set(year, Calendar.JULY, 7);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Нараджэньне сьв. Яна Хрысьціцеля\n(паводле юльянскага календара)";
-        pravas.set(year, 6, 12);
+        pravas.set(year, Calendar.JULY, 12);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Вярхоўных ап. Пятра і Паўла\n(паводле юльянскага календара)";
-        pravas.set(year, 8, 11);
+        pravas.set(year, Calendar.SEPTEMBER, 11);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Адсячэньне галавы\nсьв. Яна Хрысьціцеля\n(паводле юльянскага календара)";
-        pravas.set(year, 9, 14);
+        pravas.set(year, Calendar.OCTOBER, 14);
         if (pravas.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Покрыва Багародзіцы\n(паводле юльянскага календара)";
         return "";
@@ -1717,35 +1716,35 @@ public class GrateCaliandarMain extends JFrame {
         int b = (2 * (year % 4) + 4 * (year % 7) + 6 * a + 6) % 7;
         if (a + b > 9) {
             data_p = a + b - 9;
-            month_p = 4;
+            month_p = Calendar.APRIL;
         } else {
             data_p = 22 + a + b;
-            month_p = 3;
+            month_p = Calendar.MARCH;
         }
-        GregorianCalendar gosud = new GregorianCalendar(year, 0, 1);
+        GregorianCalendar gosud = new GregorianCalendar(year, Calendar.JANUARY, 1);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear) return "Новы год (непрац.)";
         gosud.add(Calendar.DATE, 1);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear) return "Новы год (непрац.)";
-        gosud.set(year, 0, 7);
+        gosud.set(year, Calendar.JANUARY, 7);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Раство Хрыстова\n(паводле календара праваслаўнай канфесіі) (непрац.)";
-        gosud.set(year, 2, 8);
+        gosud.set(year, Calendar.MARCH, 8);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear) return "Дзень жанчынаў (непрац.)";
-        gosud.set(year, month_p - 1, data_p);
+        gosud.set(year, month_p, data_p);
         gosud.add(Calendar.DATE, 22);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Радаўніца\n(паводле календара праваслаўнай канфесіі) (непрац.)";
-        gosud.set(year, 4, 1);
+        gosud.set(year, Calendar.MAY, 1);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear) return "Сьвята працы (непрац.)";
-        gosud.set(year, 4, 9);
+        gosud.set(year, Calendar.MAY, 9);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear) return "Дзень Перамогі (непрац.)";
-        gosud.set(year, 6, 3);
+        gosud.set(year, Calendar.JULY, 3);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Дзень Незалежнасьці Рэспублікі Беларусь (Дзень Рэспублікі) (непрац.)";
-        gosud.set(year, 10, 7);
+        gosud.set(year, Calendar.NOVEMBER, 7);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Дзень Кастрычніцкай рэвалюцыі (непрац.)";
-        gosud.set(year, 11, 25);
+        gosud.set(year, Calendar.DECEMBER, 25);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Раство Хрыстова\n(паводле календара каталіцкай канфесіі) (непрац.)";
         return "";
@@ -1766,54 +1765,54 @@ public class GrateCaliandarMain extends JFrame {
         int ex = (2 * b + 4 * cx + 6 * d + n) % 7;
         if (d + ex <= 9) {
             data_p = d + ex + 22;
-            month_p = 3;
+            month_p = Calendar.MARCH;
         } else {
             data_p = d + ex - 9;
             if (d == 29 && ex == 6) data_p = 19;
             if (d == 28 && ex == 6) data_p = 18;
-            month_p = 4;
+            month_p = Calendar.APRIL;
         }
         int a2 = (19 * (year % 19) + 15) % 30;
         int b2 = (2 * (year % 4) + 4 * (year % 7) + 6 * a2 + 6) % 7;
         if (a2 + b2 > 9) {
             data_p2 = a2 + b2 - 9;
-            month_p2 = 4;
+            month_p2 = Calendar.APRIL;
         } else {
             data_p2 = 22 + a2 + b2;
-            month_p2 = 3;
+            month_p2 = Calendar.MARCH;
         }
-        GregorianCalendar gosud = new GregorianCalendar(year, 2, 15);
+        GregorianCalendar gosud = new GregorianCalendar(year, Calendar.MARCH, 15);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Дзень Канстытуцыі Рэспублікі Беларусь";
-        gosud.set(year, 3, 2);
+        gosud.set(year, Calendar.APRIL, 2);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Дзень яднаньня народаў Беларусі і Расеі";
         // другая нядзеля траўня
         int[] may = {8, 9, 10, 11, 12, 13, 14};
         for (int aMay : may) {
-            gosud.set(year, 4, aMay);
+            gosud.set(year, Calendar.MAY, aMay);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     return "Дзень Дзяржаўнага герба Рэспублікі Беларусь і Дзяржаўнага сьцяга Рэспублікі Беларусь";
             }
         }
-        gosud.set(year, 1, 23);
+        gosud.set(year, Calendar.FEBRUARY, 23);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Дзень абаронцаў Айчыны і Ўзброеных Сілаў Рэспублікі Беларусь";
-        gosud.set(year, month_p - 1, data_p);
+        gosud.set(year, month_p, data_p);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear) return "Вялікдзень (паводле календара каталіцкай канфесіі)";
-        gosud.set(year, month_p2 - 1, data_p2);
+        gosud.set(year, month_p2, data_p2);
         gosud.add(Calendar.DATE, 13);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear) return "Вялікдзень (паводле календара праваслаўнай канфесіі)";
-        gosud.set(year, 10, 2);
+        gosud.set(year, Calendar.NOVEMBER, 2);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear) return "Дзень памяці";
-        gosud.set(year, 1, 15);
+        gosud.set(year, Calendar.FEBRUARY, 15);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Дзень памяці воінаў-інтэрнацыяналістаў";
-        gosud.set(year, 3, 26);
+        gosud.set(year, Calendar.APRIL, 26);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear) return "Дзень чарнобыльскай трагедыі";
-        gosud.set(year, 5, 22);
+        gosud.set(year, Calendar.JUNE, 22);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             return "Дзень усенароднай памяці ахвяраў Вялікай Айчыннай вайны";
         return "";
@@ -1828,42 +1827,42 @@ public class GrateCaliandarMain extends JFrame {
         int[] may4 = {22, 23, 24, 25, 26, 27, 28}; // 4 тыдзень
         int[] may5 = {24, 25, 26, 27, 28, 29, 30}; // Апошні тыдзень
         int[] may6 = {25, 26, 27, 28, 29, 30, 31}; // Апошні тыдзень
-        GregorianCalendar gosud = new GregorianCalendar(year, 0, 5);
+        GregorianCalendar gosud = new GregorianCalendar(year, Calendar.JANUARY, 5);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень работнікаў сацыяльнай абароны\n");
         for (int aMay1 : may1) {
-            gosud.set(year, 0, aMay1);
+            gosud.set(year, Calendar.JANUARY, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень банкаўскіх і фінансавых работнікаў\n");
             }
         }
-        gosud.set(year, 0, 19);
+        gosud.set(year, Calendar.JANUARY, 19);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень выратавальніка\n");
         for (int aMay6 : may6) {
-            gosud.set(year, 0, aMay6);
+            gosud.set(year, Calendar.JANUARY, aMay6);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень беларускай навукі\n");
             }
         }
-        gosud.set(year, 1, 21);
+        gosud.set(year, Calendar.FEBRUARY, 21);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень работнікаў землеўпарадкавальнай і картографа-геадэзічнай службы\n");
-        gosud.set(year, 2, 4);
+        gosud.set(year, Calendar.MARCH, 4);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень міліцыі\n");
-        gosud.set(year, 2, 18);
+        gosud.set(year, Calendar.MARCH, 18);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень унутраных войскаў\n");
-        gosud.set(year, 2, 23);
+        gosud.set(year, Calendar.MARCH, 23);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень работнікаў гідраметэаралагічнай службы\n");
         for (int aMay4 : may4) {
-            gosud.set(year, 2, aMay4);
+            gosud.set(year, Calendar.MARCH, aMay4);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -1871,36 +1870,36 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay1 : may1) {
-            gosud.set(year, 3, aMay1);
+            gosud.set(year, Calendar.APRIL, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень геолага\n");
             }
         }
-        gosud.set(year, 3, 22);
+        gosud.set(year, Calendar.APRIL, 22);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень судовага эксьперта\n");
 
-        gosud.set(year, 4, 5);
+        gosud.set(year, Calendar.MAY, 5);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень друку\n");
-        gosud.set(year, 4, 7);
+        gosud.set(year, Calendar.MAY, 7);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень работнікаў радыё, тэлебачаньня і сувязі\n");
         for (int aMay3 : may3) {
-            gosud.set(year, 4, aMay3);
+            gosud.set(year, Calendar.MAY, aMay3);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 7) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень работнікаў фізічнай культуры і спорту\n");
             }
         }
-        gosud.set(year, 4, 28);
+        gosud.set(year, Calendar.MAY, 28);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень памежніка\n");
         for (int aMay6 : may6) {
-            gosud.set(year, 4, aMay6);
+            gosud.set(year, Calendar.MAY, aMay6);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -1908,7 +1907,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay1 : may1) {
-            gosud.set(year, 5, aMay1);
+            gosud.set(year, Calendar.JUNE, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -1916,7 +1915,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay2 : may2) {
-            gosud.set(year, 5, aMay2);
+            gosud.set(year, Calendar.JUNE, aMay2);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -1924,29 +1923,29 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay3 : may3) {
-            gosud.set(year, 5, aMay3);
+            gosud.set(year, Calendar.JUNE, aMay3);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень медычных работнікаў\n");
             }
         }
-        gosud.set(year, 5, 26);
+        gosud.set(year, Calendar.JUNE, 26);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень работнікаў пракуратуры\n");
         for (int aMay6 : may5) {
-            gosud.set(year, 5, aMay6);
+            gosud.set(year, Calendar.JUNE, aMay6);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 7) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень вынаходніка і рацыяналізатара\n");
             }
         }
-        gosud.set(year, 5, 30);
+        gosud.set(year, Calendar.JUNE, 30);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень эканаміста\n");
         for (int aMay1 : may1) {
-            gosud.set(year, 6, aMay1);
+            gosud.set(year, Calendar.JULY, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 7) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -1954,7 +1953,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay1 : may1) {
-            gosud.set(year, 6, aMay1);
+            gosud.set(year, Calendar.JULY, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -1962,7 +1961,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay2 : may2) {
-            gosud.set(year, 6, aMay2);
+            gosud.set(year, Calendar.JULY, aMay2);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -1970,30 +1969,30 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay3 : may3) {
-            gosud.set(year, 6, aMay3);
+            gosud.set(year, Calendar.JULY, aMay3);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень металурга\n");
             }
         }
-        gosud.set(year, 6, 25);
+        gosud.set(year, Calendar.JULY, 25);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень пажарнай службы\n");
 
         for (int aMay6 : may6) {
-            gosud.set(year, 6, aMay6);
+            gosud.set(year, Calendar.JULY, aMay6);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень работнікаў гандлю\n");
             }
         }
-        gosud.set(year, 7, 2);
+        gosud.set(year, Calendar.AUGUST, 2);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень дэсантнікаў і сіл сьпецыяльных аперацыяў\n");
         for (int aMay1 : may1) {
-            gosud.set(year, 7, aMay1);
+            gosud.set(year, Calendar.AUGUST, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2001,7 +2000,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay2 : may2) {
-            gosud.set(year, 7, aMay2);
+            gosud.set(year, Calendar.AUGUST, aMay2);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2009,7 +2008,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay3 : may3) {
-            gosud.set(year, 7, aMay3);
+            gosud.set(year, Calendar.AUGUST, aMay3);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2017,43 +2016,43 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay6 : may6) {
-            gosud.set(year, 7, aMay6);
+            gosud.set(year, Calendar.AUGUST, aMay6);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень шахцёра\n");
             }
         }
-        gosud.set(year, 7, 23);
+        gosud.set(year, Calendar.AUGUST, 23);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень работнікаў дзяржаўнай статыстыкі\n");
         for (int aMay1 : may1) {
-            gosud.set(year, 8, aMay1);
+            gosud.set(year, Calendar.SEPTEMBER, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень работнікаў газавай, нафтавай і паліўнай прамысловасьці\n");
             }
         }
-        gosud.set(year, 8, 12);
+        gosud.set(year, Calendar.SEPTEMBER, 12);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень супрацоўніка органаў папярэдняга сьледзтва\n");
         for (int aMay2 : may2) {
-            gosud.set(year, 8, aMay2);
+            gosud.set(year, Calendar.SEPTEMBER, aMay2);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень танкістаў\n");
             }
         }
-        gosud.set(year, 8, 15);
+        gosud.set(year, Calendar.SEPTEMBER, 15);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень бібліятэк\n");
-        gosud.set(year, 8, 20);
+        gosud.set(year, Calendar.SEPTEMBER, 20);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень мытніка\n");
         for (int aMay3 : may3) {
-            gosud.set(year, 8, aMay3);
+            gosud.set(year, Calendar.SEPTEMBER, aMay3);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2061,7 +2060,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay5 : may5) {
-            gosud.set(year, 8, aMay5);
+            gosud.set(year, Calendar.SEPTEMBER, aMay5);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2069,32 +2068,32 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay1 : may1) {
-            gosud.set(year, 9, aMay1);
+            gosud.set(year, Calendar.OCTOBER, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень настаўніка\n");
             }
         }
-        gosud.set(year, 9, 6);
+        gosud.set(year, Calendar.OCTOBER, 6);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень архівіста\n");
         for (int aMay2 : may2) {
-            gosud.set(year, 9, aMay2);
+            gosud.set(year, Calendar.OCTOBER, aMay2);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень работнікаў культуры\n");
             }
         }
-        gosud.set(year, 9, 14);
+        gosud.set(year, Calendar.OCTOBER, 14);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень стандартызацыі\n");
-        gosud.set(year, 9, 15);
+        gosud.set(year, Calendar.OCTOBER, 15);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень работнікаў фармацэўтычнай і мікрабіялагічнай прамысловасьці\n");
         for (int aMay6 : may6) {
-            gosud.set(year, 9, aMay6);
+            gosud.set(year, Calendar.OCTOBER, aMay6);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2102,7 +2101,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay1 : may1) {
-            gosud.set(year, 10, aMay1);
+            gosud.set(year, Calendar.NOVEMBER, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2110,7 +2109,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay3 : may3) {
-            gosud.set(year, 10, aMay3);
+            gosud.set(year, Calendar.NOVEMBER, aMay3);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2118,7 +2117,7 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay1 : may1) {
-            gosud.set(year, 11, aMay1);
+            gosud.set(year, Calendar.DECEMBER, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 7) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2126,61 +2125,61 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay1 : may1) {
-            gosud.set(year, 11, aMay1);
+            gosud.set(year, Calendar.DECEMBER, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень юрыста\n");
             }
         }
-        gosud.set(year, 11, 17);
+        gosud.set(year, Calendar.DECEMBER, 17);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень беларускага кіно\n");
-        gosud.set(year, 11, 20);
+        gosud.set(year, Calendar.DECEMBER, 20);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень работніка органаў дзяржаўнай бясьпекі\n");
-        gosud.set(year, 11, 22);
+        gosud.set(year, Calendar.DECEMBER, 22);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень энэргетыка\n");
-        gosud.set(year, 0, 21);
+        gosud.set(year, Calendar.JANUARY, 21);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень інжынерных войскаў\n");
         for (int aMay1 : may2) {
-            gosud.set(year, 3, aMay1);
+            gosud.set(year, Calendar.APRIL, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень войскаў супрацьпаветранай абароны\n");
             }
         }
-        gosud.set(year, 7, 6);
+        gosud.set(year, Calendar.AUGUST, 6);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень чыгуначных войскаў\n");
-        gosud.set(year, 10, 19);
+        gosud.set(year, Calendar.NOVEMBER, 19);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень ракетных войскаў і артылерыі\n");
-        gosud.set(year, 2, 15);
+        gosud.set(year, Calendar.MARCH, 15);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень спажыўца\n");
-        gosud.set(year, 4, 15);
+        gosud.set(year, Calendar.MAY, 15);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень сям'і\n");
-        gosud.set(year, 5, 5);
+        gosud.set(year, Calendar.JUNE, 5);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень аховы навакольнага асяроддзя\n");
         for (int aMay1 : may5) {
-            gosud.set(year, 5, aMay1);
+            gosud.set(year, Calendar.JUNE, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень моладзі\n");
             }
         }
-        gosud.set(year, 8, 1);
+        gosud.set(year, Calendar.SEPTEMBER, 1);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень ведаў\n");
         for (int aMay1 : may1) {
-            gosud.set(year, 8, aMay1);
+            gosud.set(year, Calendar.SEPTEMBER, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 1) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
@@ -2188,23 +2187,23 @@ public class GrateCaliandarMain extends JFrame {
             }
         }
         for (int aMay1 : may3) {
-            gosud.set(year, 8, aMay1);
+            gosud.set(year, Calendar.SEPTEMBER, aMay1);
             int wik = gosud.get(Calendar.DAY_OF_WEEK);
             if (wik == 3) {
                 if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
                     result.insert(0, "Дзень міру\n");
             }
         }
-        gosud.set(year, 9, 1);
+        gosud.set(year, Calendar.OCTOBER, 1);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень пажылых людзей\n");
-        gosud.set(year, 9, 14);
+        gosud.set(year, Calendar.OCTOBER, 14);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень маці\n");
-        gosud.set(year, 11, 3);
+        gosud.set(year, Calendar.DECEMBER, 3);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень інвалідаў Рэспублікі Беларусь\n");
-        gosud.set(year, 11, 10);
+        gosud.set(year, Calendar.DECEMBER, 10);
         if (gosud.get(Calendar.DAY_OF_YEAR) == DayYear)
             result.insert(0, "Дзень правоў чалавека\n");
         return result.toString().trim();

@@ -8,7 +8,6 @@ import java.util.GregorianCalendar;
  * Created by oleg on 21.10.16
  */
 
-@SuppressWarnings("MagicConstant")
 class caliandar_year {
 
     private static String[][] svitya;
@@ -146,14 +145,14 @@ class caliandar_year {
         int ex = (2 * b + 4 * cx + 6 * d + n) % 7;
         if (d + ex <= 9) {
             data_p = d + ex + 22;
-            month_p = 3;
+            month_p = Calendar.MARCH;
         } else {
             data_p = d + ex - 9;
             if (d == 29 && ex == 6) data_p = 19;
             if (d == 28 && ex == 6) data_p = 18;
-            month_p = 4;
+            month_p = Calendar.APRIL;
         }
-        GregorianCalendar pasha = new GregorianCalendar(Year, month_p - 1, data_p);
+        GregorianCalendar pasha = new GregorianCalendar(Year, month_p, data_p);
         int pashaDay = pasha.get(Calendar.DAY_OF_YEAR) - 1;
         int nachaloGoda = 365 - pashaDay;
         int tekusiyDen;
