@@ -1061,8 +1061,6 @@ public class GrateCaliandarMain extends JFrame {
                     } else {
                         sviatyaChtenia = "На ютрані: Мц 14.1-13;\nДз 13.25-32; Мк 6.14-30";
                     }
-                    post = false;
-                    postBild = "0";
                     sviatyDay = "2";
                     tipicon = "2";
                 }
