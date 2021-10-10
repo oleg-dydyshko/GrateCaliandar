@@ -96,63 +96,6 @@ public class GrateCaliandarMain extends JFrame {
         frame.setVisible(true);
     }
 
-    private Boolean checkSviatyiaContent(int day, int mun) {
-        try {
-            File svitya = new File("/home/oleg/www/carkva/chytanne/sviatyja/opisanie" + mun + ".json");
-            InputStream inputStream = new FileInputStream(svitya);
-            InputStreamReader isr = new InputStreamReader(inputStream);
-            BufferedReader reader = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-            inputStream.close();
-            Gson gson = new Gson();
-            java.lang.reflect.Type type = new TypeToken<ArrayList<String>>() {
-            }.getType();
-            ArrayList<String> sviaty = gson.fromJson(sb.toString(), type);
-            String sv = sviaty.get(day - 1);
-            if (sv.equals(""))
-                return false;
-            int t1 = sv.indexOf("<p>");
-            String rs = sv.substring(t1 + 3).trim();
-            if (rs.equals(""))
-                return false;
-        } catch (Throwable ignored) {
-            return true;
-        }
-        return true;
-    }
-
-    private String checkSviatyiaZmennyiaChastki(int day, int mun) {
-        String result = "0";
-        try {
-            File svitya = new File("/home/oleg/www/carkva/chytanne/sviatyja/opisanie" + mun + ".json");
-            InputStream inputStream = new FileInputStream(svitya);
-            InputStreamReader isr = new InputStreamReader(inputStream);
-            BufferedReader reader = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-            inputStream.close();
-            Gson gson = new Gson();
-            java.lang.reflect.Type type = new TypeToken<ArrayList<String>>() {
-            }.getType();
-            ArrayList<String> sviaty = gson.fromJson(sb.toString(), type);
-            String res = sviaty.get(day - 1).toLowerCase();
-            if (res.contains("<em>")) {
-                if (res.contains("трапар") || res.contains("кандак"))
-                    result = "1";
-            }
-        } catch (Throwable ignored) {
-            result = "0";
-        }
-        return result;
-    }
-
     private void backCopySiteCarkva() {
         try {
             int responseCodeS;
@@ -267,7 +210,6 @@ public class GrateCaliandarMain extends JFrame {
                         outputStream.close();
                     }
                 }
-                //FileUtils.copyDirectory(source, dest, false);
             } catch (IOException ignored) {
             }
 
@@ -279,7 +221,6 @@ public class GrateCaliandarMain extends JFrame {
                 else dayyear = 365 + dayyear;
             }
             GregorianCalendar c2 = new GregorianCalendar(get_caliandar_year_min, Calendar.JANUARY, 1);
-            //int Year = c2.get(Calendar.YEAR);
 
             ArrayList<String> arrayList = new ArrayList<>();
             ArrayList<ArrayList<String>> arrayListsNelel = new ArrayList<>();
@@ -405,7 +346,6 @@ public class GrateCaliandarMain extends JFrame {
                 if (caliandar_year.getSviaty(year, DayYear, 0) != null) {
                     sviaty = new StringBuilder(caliandar_year.getSviaty(year, DayYear, 0));
                     if (caliandar_year.getSviaty(year, DayYear, 2).equals("4")) {
-                        //predsviaty = "<em>" + sviaty + "</em>";
                         sviaty = new StringBuilder();
                     }
                 }
@@ -466,7 +406,6 @@ public class GrateCaliandarMain extends JFrame {
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
                     predsviaty = "<em>Вялікая субота</em>";
                 }
-                //System.out.println(pasha.get(Calendar.DATE) + "." + (pasha.get(Calendar.MONTH) + 1) + "." + pasha.get(Calendar.YEAR));
                 GregorianCalendar rog = new GregorianCalendar();
                 int[] rogdestvo = {11, 12, 13, 14, 15, 16, 17};
                 int[] rogdestvo2 = {18, 19, 20, 21, 22, 23, 24};
@@ -927,9 +866,6 @@ public class GrateCaliandarMain extends JFrame {
                 }
                 sviatyiaName = sviatyiaName.replace("$", "");
 
-                if (!checkSviatyiaContent(c2.get(Calendar.DATE), c2.get(Calendar.MONTH) + 1)) {
-                    sviatyiaName = "<!--no_apisanne-->" + sviatyiaName;
-                }
                 if (bogaziaulenneNed == 1) {
                     bogaziaulenne = bogaziaulenne - 2;
                 } else if (bogaziaulenneNed == 7) {
@@ -937,19 +873,13 @@ public class GrateCaliandarMain extends JFrame {
                 }
                 if (AdsiachenneGalavyNed == 1) {
                     AdsiachenneGalavy = AdsiachenneGalavy - 2;
-                } /*else if (AdsiachenneGalavyNed == 7) {
-                    AdsiachenneGalavy = AdsiachenneGalavy - 1;
-                }*/
+                }
                 if (KrygaUzvyshenneNed == 1) {
                     KrygaUzvyshenne = KrygaUzvyshenne - 2;
-                } /*else if (KrygaUzvyshenneNed == 7) {
-                    KrygaUzvyshenne = KrygaUzvyshenne - 1;
-                }*/
+                }
                 if (KaliadyNed == 1) {
                     Kaliady = Kaliady - 2;
-                } /*else if (KaliadyNed == 7) {
-                    Kaliady = Kaliady - 1;
-                }*/
+                }
                 String tipicon = "0";
 
                 if (sviatyia_new[DayYear][3] != null && sviatyia_new[DayYear][3].equals("1")) {
@@ -1300,11 +1230,10 @@ public class GrateCaliandarMain extends JFrame {
                 GregorianCalendar tdate = new GregorianCalendar(year, c2.get(Calendar.MONTH), c2.get(Calendar.DATE));
                 int raznica = tdate.get(Calendar.DAY_OF_YEAR) - gc.get(Calendar.DAY_OF_YEAR);
                 arrayList.add(String.valueOf(raznica)); // Количество дней до и после Пасхи 22
-                arrayList.add(checkSviatyiaZmennyiaChastki(c2.get(Calendar.DATE), c2.get(Calendar.MONTH) + 1)); // Есть(1) или нету(0) изменяемые части у Святых 23
+                arrayList.add(String.valueOf(munAdapter)); // Номер позиции в месячном адапторе 23
                 arrayList.add(String.valueOf(c2.get(Calendar.DAY_OF_YEAR))); // День в году 24
                 arrayList.add(String.valueOf(e - 1)); //Номер позиции в адапторе 25
                 arrayList.add(String.valueOf(niadzeliaAdapter)); //Номер позиции в недельном адапторе 26
-                arrayList.add(String.valueOf(munAdapter)); //Номер позиции в месячном адапторе 27
                 arrayListsNelel.add(arrayList);
                 arrayList = new ArrayList<>();
                 c2.add(Calendar.DATE, 1);
