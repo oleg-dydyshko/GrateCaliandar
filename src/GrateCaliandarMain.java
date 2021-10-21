@@ -96,6 +96,45 @@ public class GrateCaliandarMain extends JFrame {
         frame.setVisible(true);
     }
 
+    private void setViersionApp() {
+        try {
+            String versionName = "4.0.0";
+            String versionCode = "43922";
+            String versionCodeRalise = "43922";
+            FileInputStream fstream = new FileInputStream("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/build.gradle");
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+            String strLine;
+            while ((strLine = br.readLine()) != null) {
+                if (strLine.contains("versionName")) {
+                    int t1 = strLine.indexOf("versionName");
+                    versionName = strLine.substring(t1 + 11).replace("\"", "").trim();
+                }
+                if (strLine.contains("versionCode")) {
+                    int t1 = strLine.indexOf("versionCode");
+                    versionCode = strLine.substring(t1 + 11).trim();
+                }
+            }
+            fstream.close();
+            String[] versionNameS = versionName.split("\\.");
+            if (versionNameS.length == 3) {
+                versionCodeRalise = versionCode;
+            }
+            String reqParam = URLEncoder.encode("saveProgram", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8");
+            reqParam += "&" + URLEncoder.encode("updateCode", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8");
+            reqParam += "&" + URLEncoder.encode("reliseApp", "UTF-8") + "=" + URLEncoder.encode(versionCodeRalise, "UTF-8");
+            reqParam += "&" + URLEncoder.encode("devApp", "UTF-8") + "=" + URLEncoder.encode(versionCode, "UTF-8");
+            URL mURL = new URL("https://carkva-gazeta.by/admin/android.php");
+            HttpURLConnection connection = (HttpURLConnection) mURL.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+            OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream());
+            osw.write(reqParam);
+            osw.flush();
+            connection.getResponseCode();
+        } catch (Throwable ignored) {
+        }
+    }
+
     private void backCopySiteCarkva() {
         try {
             int responseCodeS;
@@ -139,6 +178,7 @@ public class GrateCaliandarMain extends JFrame {
         new Thread(() -> {
             get_caliandar_year_min = Integer.parseInt(yearS.getText());
             get_caliandar_year_max = Integer.parseInt(yaerE.getText());
+            setViersionApp();
             if (checkBox3.isSelected()) {
                 backCopySiteCarkva();
             }
