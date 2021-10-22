@@ -27,7 +27,7 @@ public class GrateCaliandarMain extends JFrame {
     private JButton textPane;
     private JButton button;
     private goButon goButon;
-    private JCheckBox checkBox2, checkBox3;
+    private JCheckBox checkBox2, checkBox3, checkBox4, checkBox5;
     private JTextField yearS, yaerE;
 
     public static void main(String[] args) {
@@ -58,10 +58,18 @@ public class GrateCaliandarMain extends JFrame {
         checkBox3 = new JCheckBox();
         checkBox3.setText("Рэзервовае капіраваньне файлаў сайта");
         checkBox3.setSelected(true);
+        checkBox4 = new JCheckBox();
+        checkBox4.setText("Дадаць абнаўленьне Бета версіі");
+        checkBox4.setSelected(false);
+        checkBox5 = new JCheckBox();
+        checkBox5.setText("Дадаць абнаўленьне Рабочей версіі");
+        checkBox5.setSelected(false);
         button = new JButton("Стварыць Каляндар");
         panel2.add(button);
         panel2.add(checkBox2);
         panel2.add(checkBox3);
+        panel2.add(checkBox4);
+        panel2.add(checkBox5);
         progressBar = new JProgressBar();
         progressBar.setIndeterminate(true);
         progressBar.setVisible(false);
@@ -92,14 +100,15 @@ public class GrateCaliandarMain extends JFrame {
         frame.getContentPane().add(BorderLayout.NORTH, panel2);
         frame.getContentPane().add(BorderLayout.WEST, panel);
         frame.getContentPane().add(BorderLayout.SOUTH, panel1);
-        frame.setSize(300, 180);
+        frame.setSize(300, 240);
         frame.setVisible(true);
     }
 
-    private void setViersionApp() {
+    private void setViersionApp(boolean release, boolean devel) {
         try {
             String versionName = "4.0.0";
-            String versionCode = "43922";
+            String versionCodeDevel = "43944";
+            String versionCodeOnFile = "43944";
             String versionCodeRalise = "43922";
             FileInputStream fstream = new FileInputStream("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/build.gradle");
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
@@ -111,18 +120,21 @@ public class GrateCaliandarMain extends JFrame {
                 }
                 if (strLine.contains("versionCode")) {
                     int t1 = strLine.indexOf("versionCode");
-                    versionCode = strLine.substring(t1 + 11).trim();
+                    versionCodeOnFile = strLine.substring(t1 + 11).trim();
                 }
             }
             fstream.close();
             String[] versionNameS = versionName.split("\\.");
-            if (versionNameS.length == 3) {
-                versionCodeRalise = versionCode;
+            if (release && versionNameS.length == 3) {
+                versionCodeRalise = versionCodeOnFile;
+            }
+            if (devel && versionNameS.length == 4) {
+                versionCodeDevel = versionCodeOnFile;
             }
             String reqParam = URLEncoder.encode("saveProgram", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8");
             reqParam += "&" + URLEncoder.encode("updateCode", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8");
             reqParam += "&" + URLEncoder.encode("reliseApp", "UTF-8") + "=" + URLEncoder.encode(versionCodeRalise, "UTF-8");
-            reqParam += "&" + URLEncoder.encode("devApp", "UTF-8") + "=" + URLEncoder.encode(versionCode, "UTF-8");
+            reqParam += "&" + URLEncoder.encode("devApp", "UTF-8") + "=" + URLEncoder.encode(versionCodeDevel, "UTF-8");
             URL mURL = new URL("https://carkva-gazeta.by/admin/android.php");
             HttpURLConnection connection = (HttpURLConnection) mURL.openConnection();
             connection.setDoOutput(true);
@@ -178,9 +190,14 @@ public class GrateCaliandarMain extends JFrame {
         new Thread(() -> {
             get_caliandar_year_min = Integer.parseInt(yearS.getText());
             get_caliandar_year_max = Integer.parseInt(yaerE.getText());
-            setViersionApp();
             if (checkBox3.isSelected()) {
                 backCopySiteCarkva();
+            }
+            if (checkBox4.isSelected()) {
+                setViersionApp(false, true);
+            }
+            if (checkBox5.isSelected()) {
+                setViersionApp(true, false);
             }
             try {
                 if (checkBox2.isSelected()) {
