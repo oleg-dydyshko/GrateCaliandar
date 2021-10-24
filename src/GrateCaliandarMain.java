@@ -669,7 +669,7 @@ public class GrateCaliandarMain extends JFrame {
                     pasha.set(year, Calendar.OCTOBER, i);
                     int dayofweek = pasha.get(Calendar.DAY_OF_WEEK);
                     if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && Calendar.SATURDAY == dayofweek) {
-                        predsviaty = "<strong>Змітраўская бацькоўская субота</strong>";
+                        predsviaty = "<strong>Зьмітраўская бацькоўская субота</strong>";
                         sv_per_ch = "Пам.: 1 Сал 4.13-17; Ян 5.24-30";
                         pameplyia = "1";
                     }
