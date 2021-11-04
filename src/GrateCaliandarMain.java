@@ -290,7 +290,7 @@ public class GrateCaliandarMain extends JFrame {
                 StringBuilder sviaty = new StringBuilder();
                 String sviatyDay = "0";
                 String pameplyia = "0";
-                String sviatyiaName = "no_sviatyia";
+                StringBuilder sviatyiaName = new StringBuilder("no_sviatyia");
                 String cytanneSV = "";
                 int year = c2.get(Calendar.YEAR);
                 int Nedel = c2.get(Calendar.DAY_OF_WEEK);
@@ -757,18 +757,6 @@ public class GrateCaliandarMain extends JFrame {
                         br = "<br>";
                     sv_per.append(br).append("Вялеб. Касьяна Рымляніна");
                 }
-                for (int dny = 24; dny <= 30; dny++) {
-                    pasha.set(year, Calendar.JUNE, dny);
-                    int wik = pasha.get(Calendar.DAY_OF_WEEK);
-                    if (wik == Calendar.SUNDAY) {
-                        if (pasha.get(Calendar.DAY_OF_YEAR) - 1 == DayYear) {
-                            String br = "";
-                            if (!sv_per.toString().equals(""))
-                                br = "<br>";
-                            sv_per.append(br).append("Берасьцейскай іконы Маці Божай");
-                        }
-                    }
-                }
                 for (int dny = 13; dny <= 19; dny++) {
                     pasha.set(year, Calendar.JULY, dny);
                     int wik = pasha.get(Calendar.DAY_OF_WEEK);
@@ -913,24 +901,36 @@ public class GrateCaliandarMain extends JFrame {
                     String br = "";
                     if (!sviatyia_new_o.equals("") && !sv_per.toString().equals(""))
                         br = "<br>";
-                    sviatyiaName = sv_per + br + sviatyia_new_o;
+                    sviatyiaName = new StringBuilder(sv_per + br + sviatyia_new_o);
+                }
+                for (int dny = 24; dny <= 30; dny++) {
+                    pasha.set(year, Calendar.JUNE, dny);
+                    int wik = pasha.get(Calendar.DAY_OF_WEEK);
+                    if (wik == Calendar.SUNDAY) {
+                        if (pasha.get(Calendar.DAY_OF_YEAR) - 1 == DayYear) {
+                            String br = "";
+                            if (!sviatyiaName.toString().equals(""))
+                                br = "<br>";
+                            sviatyiaName.append(br).append("Берасьцейскай іконы Маці Божай");
+                        }
+                    }
                 }
 
                 if (sviatyia_new[DayYear][2].equals("7")) {
                     int sv1 = sviatyiaName.indexOf("$");
                     if (sv1 != -1)
-                        sviatyiaName = "<font color=#d00505><strong>" + sviatyiaName.substring(0, sv1 + 1) + "</strong></font>" + sviatyiaName.substring(sv1 + 1);
+                        sviatyiaName = new StringBuilder("<font color=#d00505><strong>" + sviatyiaName.substring(0, sv1 + 1) + "</strong></font>" + sviatyiaName.substring(sv1 + 1));
                     else
-                        sviatyiaName = "<font color=#d00505><strong>" + sviatyiaName + "</strong></font>";
+                        sviatyiaName = new StringBuilder("<font color=#d00505><strong>" + sviatyiaName + "</strong></font>");
                 }
                 if (sviatyia_new[DayYear][2].equals("6")) {
                     int sv1 = sviatyia_new_o.indexOf("$");
                     if (sv1 != -1)
-                        sviatyiaName = "<font color=#d00505>" + sviatyiaName.substring(0, sv1 + 1) + "</font>" + sviatyiaName.substring(sv1 + 1);
+                        sviatyiaName = new StringBuilder("<font color=#d00505>" + sviatyiaName.substring(0, sv1 + 1) + "</font>" + sviatyiaName.substring(sv1 + 1));
                     else
-                        sviatyiaName = "<font color=#d00505>" + sviatyiaName + "</font>";
+                        sviatyiaName = new StringBuilder("<font color=#d00505>" + sviatyiaName + "</font>");
                 }
-                sviatyiaName = sviatyiaName.replace("$", "");
+                sviatyiaName = new StringBuilder(sviatyiaName.toString().replace("$", ""));
 
                 if (bogaziaulenneNed == 1) {
                     bogaziaulenne = bogaziaulenne - 2;
@@ -1228,7 +1228,7 @@ public class GrateCaliandarMain extends JFrame {
                 arrayList.add(String.valueOf(c2.get(Calendar.MONTH))); // Месяц 2
                 arrayList.add(String.valueOf(year)); // Год 3
 
-                arrayList.add(sviatyiaName); // Имена Святых 4
+                arrayList.add(sviatyiaName.toString()); // Имена Святых 4
                 if (sviatyDay.contains("1")) {
                     arrayList.add("1");// Обозначение Двунадесятого праздника 5
                 } else if (sviatyDay.contains("2")) {
