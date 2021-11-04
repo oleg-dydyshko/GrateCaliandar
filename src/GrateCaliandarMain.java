@@ -757,6 +757,18 @@ public class GrateCaliandarMain extends JFrame {
                         br = "<br>";
                     sv_per.append(br).append("Вялеб. Касьяна Рымляніна");
                 }
+                for (int dny = 24; dny <= 30; dny++) {
+                    pasha.set(year, Calendar.JUNE, dny);
+                    int wik = pasha.get(Calendar.DAY_OF_WEEK);
+                    if (wik == Calendar.SUNDAY) {
+                        if (pasha.get(Calendar.DAY_OF_YEAR) - 1 == DayYear) {
+                            String br = "";
+                            if (!sv_per.toString().equals(""))
+                                br = "<br>";
+                            sv_per.append(br).append("Берасьцейскай іконы Маці Божай");
+                        }
+                    }
+                }
                 for (int dny = 13; dny <= 19; dny++) {
                     pasha.set(year, Calendar.JULY, dny);
                     int wik = pasha.get(Calendar.DAY_OF_WEEK);
@@ -816,7 +828,7 @@ public class GrateCaliandarMain extends JFrame {
                 pasha.add(Calendar.DATE, -1);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR)) {
                     predsviaty = "<strong>Дзяды</strong>";
-                    sv_per_ch = "Пам.: 1 Кар 15.47-57; Ян 6.48-54";
+                    sv_per_ch = "Пам.: 1 Кар 15.39-57; Ян 5.24-30";
                     pameplyia = "1";
                 }
                 pasha.set(year, Calendar.DECEMBER, 24);
@@ -1104,7 +1116,6 @@ public class GrateCaliandarMain extends JFrame {
                         sviaty = new StringBuilder("ДАБРАВЕШЧАНЬНЕ НАЙСЬВЯЦЕЙШАЙ БАГАРОДЗІЦЫ");
                         sviatyaChtenia = "Тон 8. На ютрані: Лк 1.39-49, 56;\nГаб 9.11-14; Мк 10.32-45;\n" + linurgia + " Габ 2.11-18; Лк 1.24-38";
                     }
-                    sv_per_ch = "На вячэрні: Быц 17.1-9; Высл 15.20-16.9; Вых 3.1-8; Высл 8.22-30";
                     sviatyDay = "1";
                     tipicon = "2";
                 }
