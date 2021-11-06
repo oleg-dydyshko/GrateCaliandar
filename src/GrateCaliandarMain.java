@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -17,6 +19,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Map;
 
 public class GrateCaliandarMain extends JFrame {
 
@@ -28,7 +31,8 @@ public class GrateCaliandarMain extends JFrame {
     private JButton button;
     private goButon goButon;
     private JCheckBox checkBox2, checkBox3, checkBox4, checkBox5;
-    private JTextField yearS, yaerE;
+    private JTextField yearS, yaerE, updateBeta, updateRealise;
+    private JFrame frame;
 
     public static void main(String[] args) {
         GrateCaliandarMain frame = new GrateCaliandarMain();
@@ -39,7 +43,7 @@ public class GrateCaliandarMain extends JFrame {
         GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
         get_caliandar_year_min = c.get(Calendar.YEAR) - 2;
         get_caliandar_year_max = c.get(Calendar.YEAR) + 1;
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         try {
             URL resource = getClass().getResource("res/krest.png");
             if (resource != null) {
@@ -61,15 +65,23 @@ public class GrateCaliandarMain extends JFrame {
         checkBox4 = new JCheckBox();
         checkBox4.setText("Дадаць абнаўленьне Бета версіі");
         checkBox4.setSelected(false);
+        checkBox4.addItemListener(new updateBetaListiner());
         checkBox5 = new JCheckBox();
         checkBox5.setText("Дадаць абнаўленьне Рабочей версіі");
         checkBox5.setSelected(false);
+        checkBox5.addItemListener(new updateRealiseListiner());
+        updateBeta = new JTextField();
+        updateBeta.setVisible(false);
+        updateRealise = new JTextField();
+        updateRealise.setVisible(false);
         button = new JButton("Стварыць Каляндар");
         panel2.add(button);
         panel2.add(checkBox2);
         panel2.add(checkBox3);
         panel2.add(checkBox4);
+        panel2.add(updateBeta);
         panel2.add(checkBox5);
+        panel2.add(updateRealise);
         progressBar = new JProgressBar();
         progressBar.setIndeterminate(true);
         progressBar.setVisible(false);
@@ -100,41 +112,48 @@ public class GrateCaliandarMain extends JFrame {
         frame.getContentPane().add(BorderLayout.NORTH, panel2);
         frame.getContentPane().add(BorderLayout.WEST, panel);
         frame.getContentPane().add(BorderLayout.SOUTH, panel1);
-        frame.setSize(300, 240);
+        frame.setSize(300, 280);
         frame.setVisible(true);
+        getViersionApp();
     }
 
-    private void setViersionApp(boolean release, boolean devel) {
+    private void getViersionApp() {
         try {
-            String versionName = "4.0.0";
-            String versionCodeDevel = "43944";
-            String versionCodeOnFile = "43944";
-            String versionCodeRalise = "43922";
-            FileInputStream fstream = new FileInputStream("/home/oleg/AndroidStudioProjects/Malitounik/malitounik-bgkc/build.gradle");
-            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
-            String strLine;
-            while ((strLine = br.readLine()) != null) {
-                if (strLine.contains("versionName")) {
-                    int t1 = strLine.indexOf("versionName");
-                    versionName = strLine.substring(t1 + 11).replace("\"", "").trim();
+            int responseCodeS;
+            URL mURL = new URL("https://carkva-gazeta.by/updateMalitounikBGKC.json");
+            HttpURLConnection connection = (HttpURLConnection) mURL.openConnection();
+            responseCodeS = connection.getResponseCode();
+            if (responseCodeS == 200) {
+                StringBuilder sb = new StringBuilder();
+                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String line = br.readLine();
+                while (line != null) {
+                    sb.append(line);
+                    line = br.readLine();
                 }
-                if (strLine.contains("versionCode")) {
-                    int t1 = strLine.indexOf("versionCode");
-                    versionCodeOnFile = strLine.substring(t1 + 11).trim();
-                }
+                Gson gson = new Gson();
+                java.lang.reflect.Type type = new TypeToken<Map<String, String>>() {
+                }.getType();
+                Map<String, String> result = gson.fromJson(sb.toString(), type);
+                String versionCodeDevel = result.get("devel");
+                String versionCodeRalise = result.get("release");
+                updateBeta.setText(versionCodeDevel);
+                updateRealise.setText(versionCodeRalise);
             }
-            fstream.close();
-            String[] versionNameS = versionName.split("\\.");
-            if (release && versionNameS.length == 3) {
-                versionCodeRalise = versionCodeOnFile;
-            }
-            if (devel && versionNameS.length == 4) {
-                versionCodeDevel = versionCodeOnFile;
-            }
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private void setViersionApp(boolean release) {
+        try {
+            String versionCodeDevel = updateBeta.getText();
+            String versionCodeRalise = updateRealise.getText();
             String reqParam = URLEncoder.encode("saveProgram", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8");
             reqParam += "&" + URLEncoder.encode("updateCode", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8");
-            reqParam += "&" + URLEncoder.encode("reliseApp", "UTF-8") + "=" + URLEncoder.encode(versionCodeRalise, "UTF-8");
-            reqParam += "&" + URLEncoder.encode("devApp", "UTF-8") + "=" + URLEncoder.encode(versionCodeDevel, "UTF-8");
+            if (release)
+                reqParam += "&" + URLEncoder.encode("reliseApp", "UTF-8") + "=" + URLEncoder.encode(versionCodeRalise, "UTF-8");
+            else
+                reqParam += "&" + URLEncoder.encode("devApp", "UTF-8") + "=" + URLEncoder.encode(versionCodeDevel, "UTF-8");
             URL mURL = new URL("https://carkva-gazeta.by/admin/android.php");
             HttpURLConnection connection = (HttpURLConnection) mURL.openConnection();
             connection.setDoOutput(true);
@@ -194,10 +213,10 @@ public class GrateCaliandarMain extends JFrame {
                 backCopySiteCarkva();
             }
             if (checkBox4.isSelected()) {
-                setViersionApp(false, true);
+                setViersionApp(false);
             }
             if (checkBox5.isSelected()) {
-                setViersionApp(true, false);
+                setViersionApp(true);
             }
             try {
                 if (checkBox2.isSelected()) {
@@ -2665,6 +2684,26 @@ public class GrateCaliandarMain extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             grate();
+        }
+    }
+
+    class updateBetaListiner implements ItemListener {
+        @Override
+        public void itemStateChanged(ItemEvent itemEvent) {
+            updateBeta.setVisible(checkBox4.isSelected());
+            frame.invalidate();
+            frame.validate();
+            frame.repaint();
+        }
+    }
+
+    class updateRealiseListiner implements ItemListener {
+        @Override
+        public void itemStateChanged(ItemEvent itemEvent) {
+            updateRealise.setVisible(checkBox5.isSelected());
+            frame.invalidate();
+            frame.validate();
+            frame.repaint();
         }
     }
 
