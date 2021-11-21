@@ -1634,8 +1634,8 @@ public class GrateCaliandarMain extends JFrame {
             pkc.add(Calendar.DATE, -1);
             if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) count2++;
         }
-        pkc.set(year, Calendar.DECEMBER, 25);
-        for (int i = 0; i < 7; i++) {
+        pkc.set(year, Calendar.DECEMBER, 26);
+        for (int i = 0; i < 6; i++) {
             if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                 if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
                     sabytiePKC = "Сьвятой Сям’і\n(паводле календара РКЦ)";
