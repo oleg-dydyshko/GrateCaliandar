@@ -1502,10 +1502,6 @@ public class GrateCaliandarMain extends JFrame {
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Сьвятога Юзафа\n(паводле календара РКЦ)";
         }
-        pkc.set(year, Calendar.JUNE, 24);
-        if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
-            sabytiePKC = "Нараджэньне сьв. Яна Хрысьціцеля\n(паводле календара РКЦ)";
-        }
         pkc.set(year, Calendar.JUNE, 29);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Сьвятых апосталаў Пятра і Паўла\n(паводле календара РКЦ)";
@@ -1605,6 +1601,14 @@ public class GrateCaliandarMain extends JFrame {
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
             sabytiePKC = "Найсьвяцейшага Сэрца Езуса\n(паводле календара РКЦ)";
         }
+        if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY && pkc.get(Calendar.MONTH) == Calendar.JUNE && pkc.get(Calendar.DATE) == 24) {
+            pkc.add(Calendar.DATE, -1);
+        } else {
+            pkc.set(year, Calendar.JUNE, 24);
+        }
+        if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
+            sabytiePKC = "Нараджэньне сьв. Яна Хрысьціцеля\n(паводле календара РКЦ)";
+        }
         pkc.set(year, month_p, data_p);
         pkc.add(Calendar.DATE, 56);
         if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
@@ -1634,15 +1638,23 @@ public class GrateCaliandarMain extends JFrame {
             pkc.add(Calendar.DATE, -1);
             if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) count2++;
         }
-        pkc.set(year, Calendar.DECEMBER, 26);
-        for (int i = 0; i < 6; i++) {
-            if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
-                    sabytiePKC = "Сьвятой Сям’і\n(паводле календара РКЦ)";
-                    break;
-                }
+        pkc.set(year, Calendar.DECEMBER, 25);
+        if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+            pkc.add(Calendar.DATE, 5);
+            if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
+                sabytiePKC = "Сьвятой Сям’і\n(паводле календара РКЦ)";
             }
-            pkc.add(Calendar.DATE, 1);
+        } else {
+            pkc.set(year, Calendar.DECEMBER, 26);
+            for (int i = 0; i < 6; i++) {
+                if (pkc.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    if (pkc.get(Calendar.DAY_OF_YEAR) == DayYear) {
+                        sabytiePKC = "Сьвятой Сям’і\n(паводле календара РКЦ)";
+                        break;
+                    }
+                }
+                pkc.add(Calendar.DATE, 1);
+            }
         }
         return sabytiePKC;
     }
