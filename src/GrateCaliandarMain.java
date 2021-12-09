@@ -864,11 +864,12 @@ public class GrateCaliandarMain extends JFrame {
                     sv_per_ch = "Вялікія гадзіны: Габ 1.1-12; Мц 1.18-25;\nГаб 1.10-2.3; Мц 2.1-12; Габ 2.11-18; Мц 2.13-23";
                 }
                 pasha.set(year, Calendar.DECEMBER, 24);
-                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)) {
+                if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    sv_per_ch = "Вялікія гадзіны: Габ 1.1-12; Мц 1.18-25;\nГал 3.23-29; Лк 2.1-20; Габ 1.10-2.3; Мц 2.1-12; Габ 2.11-18; Мц 2.13-23";
                     cytanneDop = "На вячэрні: Гал 3.15-22; Мц 13.31-36";
-                } else if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
-                    cytanneDop = "На вячэрні: Быц 1.1-13; Лікі 24.2-3, 5-9, 17-18; Міх 4.6-7, 5.1-4; Іс 11.1-10;\nЯрэм 3.35-4.4; Дан 2.31-36, 44-45; Іс 9.5-6, 7.10-16, 8.1-4, 9-10";
-                }
+                } /*else if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1) {
+                    cytanneDop = "На вячэрні: Быц 1.1-13; Лікі 24.2-3, 5-9, 17-18; Міх 4.6-7, 5.1-4; Іс 11.1-10;\nЕр 3.35-4.4; Дан 2.31-36, 44-45; Іс 9.5-6, 7.10-16, 8.1-4, 9-10";
+                }*/
                 pasha.set(year, Calendar.JANUARY, 5);
                 if (DayYear == pasha.get(Calendar.DAY_OF_YEAR) - 1 && (pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || pasha.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)) {
                     cytanneDop = "На вячэрні: 1 Кар 10.1-4; Лк 3.1-18";
