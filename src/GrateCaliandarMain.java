@@ -266,8 +266,6 @@ public class GrateCaliandarMain extends JFrame {
                     FileUtils.copyURLToFile(new URL("https://carkva-gazeta.by/calendarsviatyia.txt"), new File("/home/oleg/www/carkva/calendarsviatyia.txt"));
                     FileUtils.copyURLToFile(new URL("https://carkva-gazeta.by/opisanie_sviat.json"), new File("/home/oleg/www/carkva/opisanie_sviat.json"));
                     FileUtils.copyURLToFile(new URL("https://carkva-gazeta.by/chytanne/piarliny.json"), new File("/home/oleg/www/carkva/chytanne/piarliny.json"));
-                    java.lang.reflect.Type type2 = new TypeToken<String>() {
-                    }.getType();
                     for (int i = get_caliandar_year_min; i <= get_caliandar_year_max; i++) {
                         StringBuilder stringBuilder = new StringBuilder();
                         URL url = new URL("https://carkva-gazeta.by/admin/getFilesCaliandar.php?year=" + i);
@@ -281,9 +279,9 @@ public class GrateCaliandarMain extends JFrame {
                                 stringBuilder.append((char) data);
                             }
                         }
-                        String sviaty = gson.fromJson(stringBuilder.toString(), type2);
+                        String[] sviaty = gson.fromJson(stringBuilder.toString(), type);
                         FileWriter outputStream = new FileWriter("/home/oleg/www/carkva/calendar-cytanne_" + i + ".php");
-                        outputStream.write(sviaty);
+                        outputStream.write(sviaty[0]);
                         outputStream.close();
                     }
                 }
