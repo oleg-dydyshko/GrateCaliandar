@@ -297,12 +297,12 @@ public class GrateCaliandarMain extends JFrame {
             }
             GregorianCalendar c2 = new GregorianCalendar(get_caliandar_year_min, Calendar.JANUARY, 1);
 
-            ArrayList<String> arrayList = new ArrayList<>();
             ArrayList<ArrayList<String>> arrayListsNelel = new ArrayList<>();
             int niadzeliaAdapter = 0;
             int munAdapter = 0;
             int mun = c2.get(Calendar.MONTH);
             for (int e = 1; e <= dayyear; e++) {
+                ArrayList<String> arrayList = new ArrayList<>();
                 String postBild = "0";
                 StringBuilder sviaty = new StringBuilder();
                 String sviatyDay = "0";
@@ -1318,7 +1318,6 @@ public class GrateCaliandarMain extends JFrame {
                 arrayList.add(String.valueOf(e - 1)); //Номер позиции в адапторе 25
                 arrayList.add(String.valueOf(niadzeliaAdapter)); //Номер позиции в недельном адапторе 26
                 arrayListsNelel.add(arrayList);
-                arrayList = new ArrayList<>();
                 c2.add(Calendar.DATE, 1);
             }
             try {
@@ -1372,33 +1371,33 @@ public class GrateCaliandarMain extends JFrame {
         calendar.add(Calendar.DATE, +10);
         int troicaD = calendar.get(Calendar.DAY_OF_MONTH);
         int troicaM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP, dataP);
+        calendar.set(year, monthP, dataP);
         calendar.add(Calendar.DATE, -70);
         int postMytnikND = calendar.get(Calendar.DAY_OF_MONTH);
         int postMytnikNM = calendar.get(Calendar.MONTH);
         calendar.add(Calendar.DATE, 7);
         int postMytnikKD = calendar.get(Calendar.DAY_OF_MONTH);
         int postMytnikKM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP, dataP);
+        calendar.set(year, monthP, dataP);
         calendar.add(Calendar.DATE, 7);
         int nopostSvetluKD = calendar.get(Calendar.DAY_OF_MONTH);
         int nopostSvetluKM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP, dataP);
+        calendar.set(year, monthP, dataP);
         calendar.add(Calendar.DATE, 49);
         int nopostTroicaND = calendar.get(Calendar.DAY_OF_MONTH);
         int nopostTroicaNM = calendar.get(Calendar.MONTH);
         calendar.add(Calendar.DATE, 7);
         int nopostTroicaKD = calendar.get(Calendar.DAY_OF_MONTH);
         int nopostTroicaKM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP, dataP);
+        calendar.set(year, monthP, dataP);
         calendar.add(Calendar.DATE, 57);
         int postPetrKD = calendar.get(Calendar.DAY_OF_MONTH);
         int postPetrKM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP, dataP);
+        calendar.set(year, monthP, dataP);
         calendar.add(Calendar.DATE, -48);
         int postVialikiND = calendar.get(Calendar.DAY_OF_MONTH);
         int postVialikiNM = calendar.get(Calendar.MONTH);
-        calendar = new GregorianCalendar(year, monthP, dataP);
+        calendar.set(year, monthP, dataP);
         calendar.add(Calendar.DATE, -1);
         int postVialikiKD = calendar.get(Calendar.DAY_OF_MONTH);
         int postVialikiKM = calendar.get(Calendar.MONTH);
@@ -1426,8 +1425,8 @@ public class GrateCaliandarMain extends JFrame {
         data.append("• <em><strong>Усе пятнiцы</strong> на працягу году вернікі БГКЦ абавязаны ўстрымлiвацца ад мясных страваў.\n");
         data.append("Посту ў пятніцу няма ў сьвяты Гасподнiя i Багародзiчныя, а таксама ў перыяд:</em>\n");
         data.append("- ад Раства (25 сьнежня) да Богазьяўленьня (6 студзеня);\n");
-        data.append("- ад Нядзелi мытнiка i фарысея (").append(postMytnikND).append(" ").append(monthName[postMytnikNM]).append(") да Нядзелi блуднага сына (").append(postMytnikKD).append(" ").append(monthName[postMytnikKM]).append("\n");
-        data.append("- ад Вялiкадня (").append(pashaD).append(" ").append(monthName[pashaM]).append(") да Нядзелi Тамаша (").append(nopostSvetluKD).append(" ").append(monthName[nopostSvetluKM]).append("\n");
+        data.append("- ад Нядзелi мытнiка i фарысея (").append(postMytnikND).append(" ").append(monthName[postMytnikNM]).append(") да Нядзелi блуднага сына (").append(postMytnikKD).append(" ").append(monthName[postMytnikKM]).append(");\n");
+        data.append("- ад Вялiкадня (").append(pashaD).append(" ").append(monthName[pashaM]).append(") да Нядзелi Тамаша (").append(nopostSvetluKD).append(" ").append(monthName[nopostSvetluKM]).append(");\n");
         data.append("- ад Тройцы (").append(nopostTroicaND).append(" ").append(monthName[nopostTroicaNM]).append(") да Нядзелi ўсiх сьвятых (").append(nopostTroicaKD).append(" ").append(monthName[nopostTroicaKM]).append(").\n");
         data.append("<em>• Асаблівы час, калі вернікі прыкладаюць узмоцненыя намаганьні для свайго духоўнага росту, абмяжоўваюць сябе ў ежы, а таксама ўстрымліваюцца ад арганiзацыi публiчных забаў з музыкай i танцамi:</em>\n");
         data.append("<strong>- Вялiкi пост і Вялікі тыдзень:</strong><em> ").append(postVialikiND).append(" ").append(monthName[postVialikiNM]).append(" – ").append(postVialikiKD).append(" ").append(monthName[postVialikiKM]).append(";</em>\n");
@@ -1436,8 +1435,8 @@ public class GrateCaliandarMain extends JFrame {
         data.append("<strong>- Калядны пост (Пiлiпаўка):</strong><em> 15 лістапада – 24 сьнежня.</em>\n");
         data.append("<strong>Грэка-католiкi абавязаны:</strong>\n");
         data.append("• <em>Устрымлiвацца ад мясных i малочных страваў:</em>\n");
-        data.append("- у першы дзень Вялiкага посту (").append(postVialikiND).append(" ").append(monthName[postVialikiNM]).append("\n");
-        data.append("- у Вялiкую пятнiцу (").append(postVialikaiPiatKD).append(" ").append(monthName[postVialikaiPiatKM]).append("\n");
+        data.append("- у першы дзень Вялiкага посту (").append(postVialikiND).append(" ").append(monthName[postVialikiNM]).append(");\n");
+        data.append("- у Вялiкую пятнiцу (").append(postVialikaiPiatKD).append(" ").append(monthName[postVialikaiPiatKM]).append(");\n");
         data.append("• <em>Устрымлiвацца ад мясных страваў i абмяжоўвацца адным пасілкам у дзень:</em>\n");
         data.append("- у Сьвяты вечар перад Раством (24 сьнежня);\n");
         data.append("- у Сьвяты вечар перад Богазьяўленьнем (5 студзеня);\n");
